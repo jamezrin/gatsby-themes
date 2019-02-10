@@ -2,11 +2,11 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby 'Elevator Pitch' theme`,
-    url: `http://`,
+    title: `Gatsby.js 'Elevator Pitch' theme`,
+    url: `https://github.com/jlengstorf/gatsby-theme-simple-docs`,
     image: 'preview.jpg',
     language: 'en',
-    description: 'asdfas'
+    description: 'coming soon...'
   },
   plugins: [
     {
