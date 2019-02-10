@@ -10,26 +10,27 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const filePath = createFilePath({ node, getNode });
 
     const source = fileNode.sourceInstanceName;
-    const separatorExists = ~filePath.indexOf(SLUG_SEPARATOR);
 
-    let prefix;
+    if (source === 'elevator-pitch-screens') {
+      const separatorExists = ~filePath.indexOf(SLUG_SEPARATOR);
 
-    if (separatorExists) {
-      const separatorPosition = filePath.indexOf(SLUG_SEPARATOR);
-      prefix = filePath.substring(1, separatorPosition);
-    } else {
-      prefix = '';
+      let position = null;
+
+      if (separatorExists) {
+        const separatorPosition = filePath.indexOf(SLUG_SEPARATOR);
+        position = filePath.substring(1, separatorPosition);
+      }
+
+      createNodeField({
+        node,
+        name: `position`,
+        value: position
+      });
+      createNodeField({
+        node,
+        name: `source`,
+        value: source
+      });
     }
-
-    createNodeField({
-      node,
-      name: `prefix`,
-      value: prefix
-    });
-    createNodeField({
-      node,
-      name: `source`,
-      value: source
-    });
   }
 };

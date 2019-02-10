@@ -54,7 +54,7 @@ class Screen extends React.Component {
         </svg>
         <div className="content">
           {children}
-          {id === 6 && <Credist />}
+          {avatar && <Credist />}
         </div>
       </section>
     );

@@ -1,3 +1,3 @@
-# I've created a couple of starters for Gatsby.
+# Now I work at Gatsby.js
 
-And now I work at Gatsby.js as a Software Engineer.
+as a Software Engineer.

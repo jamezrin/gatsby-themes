@@ -34,7 +34,7 @@ const Viewer = props => {
   const screensData = edges.map(edge => {
     const {
       node: {
-        fields: { prefix: id },
+        fields: { position: id },
         html
       }
     } = edge;
@@ -86,15 +86,15 @@ export default () => (
           filter: {
             fields: {
               source: { eq: "elevator-pitch-screens" }
-              prefix: { ne: null }
+              position: { ne: null }
             }
           }
-          sort: { fields: [fields___prefix], order: ASC }
+          sort: { fields: [fields___position], order: ASC }
         ) {
           edges {
             node {
               fields {
-                prefix
+                position
                 source
               }
               html
