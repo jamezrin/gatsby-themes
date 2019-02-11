@@ -69,7 +69,7 @@ const Viewer = props => {
   );
 };
 
-export default () => (
+const IndexPage = () => (
   <StaticQuery
     query={graphql`
       query IndexQuery {
@@ -116,3 +116,5 @@ export default () => (
     render={data => <Viewer data={data} />}
   />
 );
+
+export default IndexPage;
