@@ -49,7 +49,7 @@ const Viewer = props => {
   });
 
   return (
-    <React.Fragment>
+    <div>
       <Screens
         screensData={screensData}
         navComponent={Nav}
@@ -65,7 +65,7 @@ const Viewer = props => {
         description={description}
         image={image}
       />
-    </React.Fragment>
+    </div>
   );
 };
 
