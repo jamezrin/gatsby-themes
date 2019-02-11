@@ -48,25 +48,7 @@ const Viewer = props => {
     return screen;
   });
 
-  return (
-    <div>
-      <Screens
-        screensData={screensData}
-        navComponent={Nav}
-        screenComponent={Screen}
-        socialComponent={Social}
-        navIcons={navIcons}
-        socialLinks={socialLinks}
-      />
-      <Seo
-        url={url}
-        language={language}
-        title={title}
-        description={description}
-        image={image}
-      />
-    </div>
-  );
+  return <div>asdfasdf</div>;
 };
 
 export default () => (
