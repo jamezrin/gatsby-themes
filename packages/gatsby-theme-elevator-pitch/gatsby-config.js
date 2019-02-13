@@ -25,8 +25,22 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `elevator-pitch-demo-screens`,
+        path: `${__dirname}/content/screens`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `elevator-pitch-images`,
         path: `content/elevator-pitch/images`,
+      },
+    },  
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `elevator-pitch-demo-images`,
+        path: `${__dirname}/content/images`,
       },
     },
     `gatsby-plugin-sharp`,

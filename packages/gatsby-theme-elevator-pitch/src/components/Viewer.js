@@ -85,7 +85,7 @@ const Viewer = () => (
         screens: allMarkdownRemark(
           filter: {
             fields: {
-              source: { eq: "elevator-pitch-screens" }
+              source: { in: ["elevator-pitch-screens", "elevator-pitch-demo-screens"] }
               position: { ne: null }
             }
           }
@@ -102,7 +102,7 @@ const Viewer = () => (
           }
         }
         avatar: file(
-          sourceInstanceName: { eq: "elevator-pitch-images" }
+          sourceInstanceName: { in: ["elevator-pitch-images", "elevator-pitch-demo-images"] }
           name: { eq: "avatar" }
         ) {
           childImageSharp {
