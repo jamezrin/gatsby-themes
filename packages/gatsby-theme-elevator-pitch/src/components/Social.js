@@ -1,27 +1,43 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+
+import GithubIcon from 'react-feather/dist/icons/github';
+import TwitterIcon from 'react-feather/dist/icons/twitter';
+import MailIcon from 'react-feather/dist/icons/mail';
 
 import style from '../styles/social';
 
-const Social = props => {
-  const { links } = props;
 
-  return (
-    <div className={style}>
-      {links.map(link => {
-        const { url, icon: Icon } = link;
-        return (
-          <a href={url} key={url}>
-            <Icon />
-          </a>
-        );
-      })}
-    </div>
-  );
-};
+const Social = () => (
+  <StaticQuery
+    query={graphql`
+      query SocialQuery {
+        site {
+          siteMetadata {
+            socialLinks {
+              github
+              twitter
+              mailto
+            }
+          }
+        }
+      }
+    `} 
 
-Social.propTypes = {
-  links: PropTypes.array.isRequired,
-};
+    render={data => {
+      const {site: {siteMetadata: {socialLinks : {
+        github, twitter, mailto
+      }}} } = data;
+
+      return (
+        <div className={style}>
+          <a href={github}><GithubIcon /></a>
+          <a href={twitter}><TwitterIcon /></a>
+          <a href={mailto}><MailIcon /></a>
+        </div>
+      )
+    }}
+  />
+);
 
 export default Social;

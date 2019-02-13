@@ -181,7 +181,6 @@ class Screens extends React.Component {
       navComponent: Nav,
       socialComponent: Social,
       navIcons,
-      socialLinks,
     } = this.props;
 
     const {
@@ -212,7 +211,7 @@ class Screens extends React.Component {
           exposedScreenId={exposedScreenId}
         >
           <div dangerouslySetInnerHTML={{ __html: lastScreen.html }} />
-          <Social links={socialLinks} />
+          <Social />
         </Screen>
 
         {reversedScreens.map((item, idx) => {
@@ -242,7 +241,6 @@ Screens.propTypes = {
   navComponent: PropTypes.func.isRequired,
   socialComponent: PropTypes.func,
   navIcons: PropTypes.object.isRequired,
-  socialLinks: PropTypes.array,
 };
 
 export default Screens;

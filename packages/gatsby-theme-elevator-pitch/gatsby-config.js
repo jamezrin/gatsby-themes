@@ -7,6 +7,11 @@ module.exports = {
     image: 'preview.jpg',
     language: 'en',
     description: 'coming soon...',
+    socialLinks: {
+      github: 'https://github.com/greglobinski',
+      twitter: 'https://twitter.com/greglobinski',
+      mailto: 'mailto:greglobinski@gmail.com'
+    },
   },
   plugins: [
     {

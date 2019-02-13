@@ -13,8 +13,6 @@ import Seo from './Seo';
 import ChevronUpIcon from 'react-feather/dist/icons/chevron-up';
 import ChevronDownIcon from 'react-feather/dist/icons/chevron-down';
 
-import socialLinks from '../social-networks-config';
-
 const ViewerTemplate = props => {
   const navIcons = {
     next: ChevronDownIcon,
@@ -56,7 +54,6 @@ const ViewerTemplate = props => {
         screenComponent={Screen}
         socialComponent={Social}
         navIcons={navIcons}
-        socialLinks={socialLinks}
       />
       <Seo
         url={url}
