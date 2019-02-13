@@ -1,9 +1,8 @@
-# [WIP!]
-
-
 ### Gatsby.js theme
 
 # Elevator Pitch
+
+![Elevator Pitch - Gatsby.js theme](static/preview.png)
 
 ## Get started
 
@@ -73,7 +72,7 @@ root
 
 #### Files names
 
-You can't use different name for avatar than `avatar.jpg`. 
+You can't use different name for avatar than `avatar.jpg`.
 
 The names of `markdown` files have to obey a pattern `X___slug.md`. Where `X` is a number indicating position of the screen. The number must be follewed by the `___` separator. The last part of the name, a `slug` is optional, so you could name the file like this `1___.md` or `1__first-scrren.md`. [Take a look](https://github.com/greglobinski/gatsby-themes/tree/master/packages/gatsby-theme-elevator-pitch/content/screens) at the demo screens markdown files
 
