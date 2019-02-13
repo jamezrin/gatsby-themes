@@ -29,6 +29,8 @@ const ViewerTemplate = props => {
     },
   } = props;
 
+  console.log(edges)
+
   const screensData = edges.map(edge => {
     const {
       node: {
@@ -45,6 +47,8 @@ const ViewerTemplate = props => {
 
     return screen;
   });
+
+  console.log(screensData)
 
   return (
     <React.Fragment>
