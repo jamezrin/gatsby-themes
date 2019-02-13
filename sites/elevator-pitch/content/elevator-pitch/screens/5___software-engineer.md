@@ -1,3 +1,3 @@
-# Now I work at Gatsby.js
+# I'm  a Gatsby.js team's member 
 
-as a Software Engineer.
+since the beginning of the year and I love that.

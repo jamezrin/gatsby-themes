@@ -1,6 +1,22 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
+const fs = require('fs');
 
 const SLUG_SEPARATOR = '___';
+
+exports.onPreBootstrap = ({ reporter }) => {
+  const dirs = [
+    'content/elevator-pitch/screens',
+    'content/elevator-pitch/images'
+  ];
+
+  dirs.forEach(dir => {
+    if (!fs.existsSync(dir)) {
+      reporter.log(`creating the ${dir} directory`);
+      fs.mkdirSync(dir);
+    }
+  })
+};
+
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
