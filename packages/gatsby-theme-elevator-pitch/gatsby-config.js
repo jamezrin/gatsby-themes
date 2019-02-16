@@ -10,7 +10,7 @@ module.exports = {
     socialLinks: {
       github: 'https://github.com/greglobinski',
       twitter: 'https://twitter.com/greglobinski',
-      mailto: 'mailto:greglobinski@gmail.com'
+      mailto: 'mailto:greglobinski@gmail.com',
     },
   },
   plugins: [
@@ -40,7 +40,7 @@ module.exports = {
         name: `elevator-pitch-images`,
         path: `content/elevator-pitch/images`,
       },
-    },  
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -52,7 +52,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-catch-links`,
-    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
