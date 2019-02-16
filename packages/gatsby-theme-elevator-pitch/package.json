@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-elevator-pitch",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "A Gatsby theme presenting a person",
   "main": "index.js",
   "license": "MIT",
