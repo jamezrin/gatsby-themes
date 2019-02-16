@@ -2,7 +2,7 @@
 
 # Elevator Pitch
 
-![Elevator Pitch - Gatsby.js theme](static/preview.png)
+![Elevator Pitch - Gatsby.js theme](../../media/gatsby-theme-elevator-pitch.gif)
 
 ## Get started
 
