@@ -29,8 +29,6 @@ const ViewerTemplate = props => {
     },
   } = props;
 
-  console.log(edges)
-
   const screensData = edges.map(edge => {
     const {
       node: {
@@ -47,8 +45,6 @@ const ViewerTemplate = props => {
 
     return screen;
   });
-
-  console.log(screensData)
 
   return (
     <React.Fragment>
@@ -86,7 +82,9 @@ const Viewer = () => (
         screens: allMarkdownRemark(
           filter: {
             fields: {
-              source: { in: ["elevator-pitch-screens", "elevator-pitch-demo-screens"] }
+              source: {
+                in: ["elevator-pitch-screens", "elevator-pitch-demo-screens"]
+              }
               position: { ne: null }
             }
           }
@@ -103,7 +101,9 @@ const Viewer = () => (
           }
         }
         avatar: file(
-          sourceInstanceName: { in: ["elevator-pitch-images", "elevator-pitch-demo-images"] }
+          sourceInstanceName: {
+            in: ["elevator-pitch-images", "elevator-pitch-demo-images"]
+          }
           name: { eq: "avatar" }
         ) {
           childImageSharp {
