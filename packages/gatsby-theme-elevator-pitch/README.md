@@ -72,13 +72,13 @@ root
 
 #### Files names
 
-You can't use different name for avatar than `avatar.jpg`.
+You can not use a different name for avatar than `avatar.jpg`.
 
-The names of `markdown` files have to obey a pattern `X___slug.md`. Where `X` is a number indicating position of the screen. The number must be follewed by the `___` separator. The last part of the name, a `slug` is optional, so you could name the file like this `1___.md` or `1__first-scrren.md`. [Take a look](https://github.com/greglobinski/gatsby-themes/tree/master/packages/gatsby-theme-elevator-pitch/content/screens) at the demo screens markdown files
+The names of `markdown` files have to obey a pattern `X___slug.md`. Where `X` is a number indicating position of the screen. The number must be follewed by the `___` separator ( 3 x undescore ). The last part of the name, a `slug` is optional. Knowing that, you can name a file like this `1___.md` or `1__first-scrren.md`. Take a look at the [demo content files](https://github.com/greglobinski/gatsby-themes/tree/master/packages/gatsby-theme-elevator-pitch/content/screens) of the theme in the repository.
 
 #### Markdown `screen` files
 
-This is example of a `markdown` file with content for one screen.
+This is example of a `markdown` file with content for one screen. Two sections: title (`#`) and a paragraph text below.
 
 ```
 # This is the screen's title
@@ -86,7 +86,7 @@ This is example of a `markdown` file with content for one screen.
 And the screen's body copy.
 ```
 
-You can add as many `screen` files as you want.
+You can add as many `screen` files as you want. But remember it should be an elevator pitch so less is better. ;)
 
 ### Start
 
