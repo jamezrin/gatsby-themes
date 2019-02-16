@@ -10,7 +10,7 @@
     "build": "gatsby build"
   },
   "dependencies": {
-    "gatsby": "^2.0.98",
+    "gatsby": "^2.1.4",
     "gatsby-theme-elevator-pitch": "^0.0.27",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
