@@ -35,12 +35,18 @@ Create a `gatsby-config.js`.
 touch gatsby-config.js
 ```
 
-Inside gatsby-config.js, set up the theme:
+Inside `gatsby-config.js`, set up the theme:
 
 ```
 module.exports = {
   __experimentalThemes: ['gatsby-theme-elevator-pitch']
 };
+```
+
+And now you can open the site with demo content.
+
+```
+gatsby develop
 ```
 
 ### Starter
@@ -94,6 +100,29 @@ And the screen's body copy.
 
 You can add as many `screen` files as you want. But remember it should be an elevator pitch so less is better. ;)
 
+#### Meta data and social links
+
+Update your `gatsby-config.js`
+
+```
+module.exports = {
+  siteMetadata: {
+    title: `Gatsby.js 'Elevator Pitch' theme`,
+    url: `https://github.com/jlengstorf/gatsby-theme-simple-docs`,
+    image: 'preview.jpg',
+    language: 'en',
+    description: 'coming soon...',
+    socialLinks: {
+      github: 'https://github.com/greglobinski',
+      twitter: 'https://twitter.com/greglobinski',
+      mailto: 'mailto:greglobinski@gmail.com',
+    },
+  },
+  module.exports = {
+  __experimentalThemes: ['gatsby-theme-elevator-pitch']
+};
+```
+
 ### Start
 
 Start the server:
@@ -101,6 +130,90 @@ Start the server:
 ```
 gatsby develop
 ```
+
+### Add Elevator Pitch to your Gatsby.js blog as a standard page
+
+The above describe how to install the theme as a standalone one page website. If you want, you can add it to your Gatsby.js blog as a standard page.
+
+For example, I have a blog built with the official `gatsby-starter-blog`. If you don't, install it now.
+
+```
+gatsby new gatsby-blog https://github.com/gatsbyjs/gatsby-starter-blog
+```
+
+Now, go to the newly created folder and install the theme
+
+```
+cd gatsby-blog
+yarn add gatsby-theme-elevator-pitch
+```
+
+Then, open `gatsby-config.js` and setup the theme.
+
+```
+module.exports = {
+  ...
+
+  __experimentalThemes: ['gatsby-theme-elevator-pitch'],
+
+  ...
+```
+
+Create a new page inside `src/pages`, with code like below. Let's call it `pitch.js`.
+
+```
+// src/pages/pitch.js
+
+import React from 'react';
+import { Viewer } from 'gatsby-theme-elevator-pitch';
+
+const PitchPage = props => <Viewer />;
+
+export default PitchPage;
+```
+
+Run `dev` server
+
+```
+gatsby develop
+```
+
+And open http://localhost:8000/pitch in your browser.
+
+That's it!
+
+However, there is an issue we have to fix.
+
+If you open http://localhost8000 you will see that the starter renders the theme's screens as blog posts. And that is not what we want, right? To fix that we have to add filters to the `GraphQl` queries in `gatsby-node.js` and `index.js`.
+
+```
+// src/pages/index.js
+
+...
+
+  allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+
+...
+```
+
+```
+// gatsby-node.js
+
+...
+
+  allMarkdownRemark(
+      filter: { fileAbsolutePath: { regex: "/blog/" } }
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 1000
+    ) {
+
+...
+```
+
+Voila!
 
 ### License
 
@@ -125,3 +238,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+```
+
+```
