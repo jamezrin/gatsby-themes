@@ -2,7 +2,7 @@
 
 # Elevator Pitch
 
-![Elevator Pitch - Gatsby.js theme](../../media/gatsby-theme-elevator-pitch.gif)
+![Elevator Pitch - Gatsby.js theme](https://github.com/greglobinski/gatsby-themes/raw/master/media/gatsby-theme-elevator-pitch.gif)
 
 > [DEMO](https://greglobinski.github.io/gatsby-starter-elevator-pitch/)
 
@@ -42,6 +42,10 @@ module.exports = {
   __experimentalThemes: ['gatsby-theme-elevator-pitch']
 };
 ```
+
+### Starter
+
+Instead installing a Gatsby.js site with the theme from scratch you can use the [Starter](https://github.com/greglobinski/gatsby-starter-elevator-pitch)
 
 ### Add content
 
