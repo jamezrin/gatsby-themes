@@ -1,3 +1,3 @@
-# I'm  a Gatsby.js team's member 
+# This is my first Gatsby.js theme!
 
-since the beginning of the year and I love that.
+What are the Gatsby.js themes? [Read here ›](https://github.com/greglobinski/gatsby-themes#about-gatsbyjs-themes)
