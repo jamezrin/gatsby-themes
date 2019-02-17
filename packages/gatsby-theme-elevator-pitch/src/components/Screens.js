@@ -194,7 +194,7 @@ class Screens extends React.Component {
     const reversedScreens = [...screens].reverse();
 
     return (
-      <main className={style}>
+      <main css={style}>
         <Nav
           numberOfScreens={numberOfScreens}
           exposedScreenId={exposedScreenId}

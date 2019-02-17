@@ -7,7 +7,6 @@ import MailIcon from 'react-feather/dist/icons/mail';
 
 import style from '../styles/social';
 
-
 const Social = () => (
   <StaticQuery
     query={graphql`
@@ -22,20 +21,29 @@ const Social = () => (
           }
         }
       }
-    `} 
-
+    `}
     render={data => {
-      const {site: {siteMetadata: {socialLinks : {
-        github, twitter, mailto
-      }}} } = data;
+      const {
+        site: {
+          siteMetadata: {
+            socialLinks: { github, twitter, mailto },
+          },
+        },
+      } = data;
 
       return (
-        <div className={style}>
-          <a href={github}><GithubIcon /></a>
-          <a href={twitter}><TwitterIcon /></a>
-          <a href={mailto}><MailIcon /></a>
+        <div css={style}>
+          <a href={github}>
+            <GithubIcon />
+          </a>
+          <a href={twitter}>
+            <TwitterIcon />
+          </a>
+          <a href={mailto}>
+            <MailIcon />
+          </a>
         </div>
-      )
+      );
     }}
   />
 );

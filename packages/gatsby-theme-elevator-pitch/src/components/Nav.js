@@ -50,7 +50,7 @@ class Nav extends React.Component {
       .map((item, idx) => idx + 1);
 
     return (
-      <nav className={style}>
+      <nav css={style}>
         {this.state.showTooltip && (
           <div className="tooltip">To move on click the arrow button</div>
         )}

@@ -4,6 +4,11 @@
   "description": "A Gatsby theme presenting a person",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
+  },
   "devDependencies": {
     "@babel/preset-flow": "^7.0.0-rc.1",
     "babel-eslint": "^10.0.1",
@@ -29,15 +34,13 @@
     "react-dom": "^16.8.1"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.6",
-    "@emotion/styled": "^10.0.6",
-    "emotion": "^10.0.6",
-    "emotion-server": "^10.0.6",
+    "@emotion/core": "^10.0.7",
+    "@emotion/styled": "^10.0.7",
     "facepaint": "^1.2.1",
     "gatsby-image": "^2.0.28",
     "gatsby-plugin-catch-links": "^2.0.9",
     "gatsby-plugin-compile-es6-packages": "^1.0.6",
-    "gatsby-plugin-emotion": "^4.0.1",
+    "gatsby-plugin-emotion": "^4.0.3",
     "gatsby-plugin-google-analytics": "^2.0.10",
     "gatsby-plugin-page-creator": "^2.0.6",
     "gatsby-plugin-react-helmet": "^3.0.5",

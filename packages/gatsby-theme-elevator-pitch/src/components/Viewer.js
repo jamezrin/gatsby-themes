@@ -1,9 +1,8 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import '../styles/variables';
-import '../styles/global';
-
+import StyleVars from '../styles/StyleVars';
+import GlobalStyles from '../styles/GlobalStyles';
 import Screens from './Screens';
 import Screen from './Screen';
 import Nav from './Nav';
@@ -48,6 +47,8 @@ const ViewerTemplate = props => {
 
   return (
     <React.Fragment>
+      <GlobalStyles />
+      <StyleVars />
       <Screens
         screensData={screensData}
         navComponent={Nav}

@@ -7,7 +7,7 @@ const Credist = () => (
   <div className="credits">
     Built with {` `}
     <a
-      href="https://github.com/greglobinski/gatsby-starter-elevator-pitch"
+      href="https://github.com/greglobinski/gatsby-themes/tree/master/packages/gatsby-theme-elevator-pitch"
       target="_blank"
       rel="noopener noreferrer"
     >
@@ -27,7 +27,8 @@ class Screen extends React.Component {
 
     return (
       <section
-        className={`${dynamicStyle} ${transitionClass ? transitionClass : ''} ${
+        css={dynamicStyle}
+        className={`${transitionClass ? transitionClass : ''} ${
           avatar ? 'last' : ''
         }`}
         id={`id-${id}`}
@@ -68,7 +69,7 @@ Screen.propTypes = {
   superSizeScale: PropTypes.number.isRequired,
   exposedScreenId: PropTypes.number.isRequired,
   avatar: PropTypes.object,
-  socialLinks: PropTypes.array
+  socialLinks: PropTypes.array,
 };
 
 export default Screen;

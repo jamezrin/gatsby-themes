@@ -1,4 +1,4 @@
-import { css, keyframes } from 'emotion';
+import { css, keyframes } from '@emotion/core';
 import facepaint from 'facepaint';
 
 const breakpoints = [768, 1024];
@@ -109,7 +109,7 @@ const screen = props => css`
 
       ${mq({
         fontSize: ['1.8em', '2.2em', '2.8em'],
-        maxWidth: ['500px', '600px', '700px']
+        maxWidth: ['500px', '600px', '700px'],
       })};
     }
 
@@ -122,7 +122,7 @@ const screen = props => css`
       z-index: 1000;
 
       ${mq({
-        maxWidth: ['500px', '600px', '700px']
+        maxWidth: ['500px', '600px', '700px'],
       })};
     }
 

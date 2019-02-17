@@ -4,6 +4,8 @@
 
 ![Elevator Pitch - Gatsby.js theme](../../media/gatsby-theme-elevator-pitch.gif)
 
+> [DEMO](https://greglobinski.github.io/gatsby-starter-elevator-pitch/)
+
 ## Get started
 
 ### Install
