@@ -1,30 +1,27 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const fs = require('fs');
 
-const SLUG_SEPARATOR = '___';
+const SLUG_SEPARATOR = '__';
 
 exports.onPreBootstrap = ({ reporter }) => {
   const dirs = [
     'content',
-    'content/elevator-pitch',
-    'content/elevator-pitch/screens',
-    'content/elevator-pitch/images',
+    'content/personal-blog',
+    'content/personal-blog/posts',
   ];
 
-  
   dirs.forEach(dir => {
     if (!fs.existsSync(dir)) {
       reporter.log(`creating the ${dir} directory`);
       fs.mkdirSync(dir);
     }
-  })
+  });
 };
 
 let userCreatedOwnContent = false;
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
-  
 
   if (node.internal.type === `MarkdownRemark`) {
     const fileNode = getNode(node.parent);
@@ -32,41 +29,56 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     const source = fileNode.sourceInstanceName;
 
-    const eligibleSources = [
-      'elevator-pitch-screens', 
-      'elevator-pitch-demo-screens'
-    ];
-    
-    if (eligibleSources.includes(source)) {
+    const eligibleSources = ['personal-blog-posts', 'personal-blog-demo-posts'];
 
-      if (source === 'elevator-pitch-screens') {
+    if (eligibleSources.includes(source)) {
+      if (source === 'personal-blog-posts') {
         userCreatedOwnContent = true;
       }
 
-      if (userCreatedOwnContent && source === 'elevator-pitch-demo-screens') {
-        return 
+      if (userCreatedOwnContent && source === 'personal-blog-demo-posts') {
+        return;
       }
 
       const separatorExists = ~filePath.indexOf(SLUG_SEPARATOR);
 
-      let position = null;
+      let slug;
+      let date;
 
       if (separatorExists) {
         const separatorPosition = filePath.indexOf(SLUG_SEPARATOR);
-        position = filePath.substring(1, separatorPosition);
+        const slugBeginning = separatorPosition + SLUG_SEPARATOR.length;
+        slug =
+          separatorPosition === 1
+            ? null
+            : `/${filePath.substring(slugBeginning)}`;
+        date = filePath.substring(1, separatorPosition);
+      } else {
+        slug = filePath;
+        date = null;
       }
 
-      createNodeField({
-        node,
-        name: `position`,
-        value: position
-      });
-      createNodeField({
-        node,
-        name: `source`,
-        value: source
-      });
-
+      if (source !== 'parts') {
+        createNodeField({
+          node,
+          name: `slug`,
+          value: slug,
+        });
+      }
+      if (date) {
+        createNodeField({
+          node,
+          name: `date`,
+          value: date,
+        });
+      }
+      if (slug) {
+        createNodeField({
+          node,
+          name: `source`,
+          value: source,
+        });
+      }
     }
   }
 };
