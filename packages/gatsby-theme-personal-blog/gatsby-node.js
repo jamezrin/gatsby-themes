@@ -58,25 +58,25 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         date = null;
       }
 
-      if (source !== 'parts') {
+      createNodeField({
+        node,
+        name: `source`,
+        value: source,
+      });
+
+      if (slug) {
         createNodeField({
           node,
           name: `slug`,
           value: slug,
         });
       }
+
       if (date) {
         createNodeField({
           node,
           name: `date`,
           value: date,
-        });
-      }
-      if (slug) {
-        createNodeField({
-          node,
-          name: `source`,
-          value: source,
         });
       }
     }
