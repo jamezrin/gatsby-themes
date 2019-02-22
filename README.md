@@ -6,6 +6,9 @@
   - [NPM](https://www.npmjs.com/package/gatsby-theme-elevator-pitch)
   - [CODE](./packages/gatsby-theme-elevator-pitch)
 
+- ### Personal Blog
+  - work in progress
+
 * more, coming soon
 
 ## About Gatsby.js themes
