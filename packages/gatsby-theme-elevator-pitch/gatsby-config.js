@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: `Gatsby.js 'Elevator Pitch' theme`,
-    url: `https://github.com/jlengstorf/gatsby-theme-simple-docs`,
+    url: `https://github.com/greglobinski/gatsby-themes/tree/master/packages/gatsby-theme-elevator-pitch`,
     image: 'preview.jpg',
     language: 'en',
     description: 'coming soon...',

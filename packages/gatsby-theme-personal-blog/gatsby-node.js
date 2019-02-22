@@ -11,18 +11,20 @@ exports.onPreBootstrap = ({ reporter }) => {
     'content/elevator-pitch/images',
   ];
 
+  
   dirs.forEach(dir => {
     if (!fs.existsSync(dir)) {
       reporter.log(`creating the ${dir} directory`);
       fs.mkdirSync(dir);
     }
-  });
+  })
 };
 
 let userCreatedOwnContent = false;
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
+  
 
   if (node.internal.type === `MarkdownRemark`) {
     const fileNode = getNode(node.parent);
@@ -31,17 +33,18 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const source = fileNode.sourceInstanceName;
 
     const eligibleSources = [
-      'elevator-pitch-screens',
-      'elevator-pitch-demo-screens',
+      'elevator-pitch-screens', 
+      'elevator-pitch-demo-screens'
     ];
-
+    
     if (eligibleSources.includes(source)) {
+
       if (source === 'elevator-pitch-screens') {
         userCreatedOwnContent = true;
       }
 
       if (userCreatedOwnContent && source === 'elevator-pitch-demo-screens') {
-        return;
+        return 
       }
 
       const separatorExists = ~filePath.indexOf(SLUG_SEPARATOR);
@@ -56,13 +59,14 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       createNodeField({
         node,
         name: `position`,
-        value: position,
+        value: position
       });
       createNodeField({
         node,
         name: `source`,
-        value: source,
+        value: source
       });
+
     }
   }
 };
