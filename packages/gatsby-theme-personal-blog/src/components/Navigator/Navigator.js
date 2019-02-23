@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
+import { UIContext } from '../../context/UIProvider';
 import PostList from './PostList';
+import { Navigator } from './Styled';
 
 const NavigatorTemplate = props => {
   const {
@@ -10,16 +12,16 @@ const NavigatorTemplate = props => {
     },
   } = props;
 
-  console.log(props.data);
+  const { navigatorState } = useContext(UIContext);
 
   return (
-    <nav>
+    <Navigator className={navigatorState}>
       <PostList posts={posts} />
-    </nav>
+    </Navigator>
   );
 };
 
-const Navigator = () => (
+const NavigatorComp = props => (
   <StaticQuery
     query={graphql`
       query NavigatorQuery {
@@ -58,8 +60,8 @@ const Navigator = () => (
         }
       }
     `}
-    render={data => <NavigatorTemplate data={data} />}
+    render={data => <NavigatorTemplate data={data} {...props} />}
   />
 );
 
-export default Navigator;
+export default NavigatorComp;

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
+
+import { UIContext } from '../../context/UIProvider';
 
 import {
   PostListItem,
@@ -17,9 +19,11 @@ const PostListItemComp = ({ title, subTitle, date, slug, cover }) => {
     childImageSharp: { fixed },
   } = cover;
 
+  const { slideNavigator } = useContext(UIContext);
+
   return (
     <PostListItem>
-      <Link to={slug}>
+      <Link to={slug} onClick={slideNavigator}>
         <PostCoverImage>
           <Img fixed={fixed} />
         </PostCoverImage>
@@ -38,6 +42,7 @@ PostListItemComp.propTypes = {
   slug: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   subTitle: PropTypes.string,
+  slide: PropTypes.func,
 };
 
 export default PostListItemComp;
