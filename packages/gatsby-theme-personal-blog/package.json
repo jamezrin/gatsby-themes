@@ -36,6 +36,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.7",
     "@emotion/styled": "^10.0.7",
+    "emotion-theming": "^10.0.7",
     "facepaint": "^1.2.1",
     "gatsby-image": "^2.0.28",
     "gatsby-plugin-algolia": "^0.3.0",
