@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import GlobalStyles from '../../styles/GlobalStyles';
+import GlobalFonts from '../../styles/GlobalFonts';
+
 import Navigator from '../Navigator';
 
 const Layout = props => {
@@ -8,6 +11,8 @@ const Layout = props => {
 
   return (
     <div>
+      <GlobalStyles />
+      <GlobalFonts />
       <Navigator />
       {children}
     </div>
