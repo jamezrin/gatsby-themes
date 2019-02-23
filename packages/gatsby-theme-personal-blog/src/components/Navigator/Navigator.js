@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import List from './List';
+import PostList from './PostList';
 
 const NavigatorTemplate = props => {
   const {
@@ -10,9 +10,11 @@ const NavigatorTemplate = props => {
     },
   } = props;
 
+  console.log(props.data);
+
   return (
     <nav>
-      <List posts={posts} />
+      <PostList posts={posts} />
     </nav>
   );
 };
@@ -44,11 +46,9 @@ const Navigator = () => (
                 subTitle
                 category
                 cover {
-                  children {
-                    ... on ImageSharp {
-                      resolutions(width: 90, height: 90) {
-                        ...GatsbyImageSharpResolutions_withWebp_noBase64
-                      }
+                  childImageSharp {
+                    fixed(width: 90, height: 90) {
+                      ...GatsbyImageSharpFixed_withWebp
                     }
                   }
                 }

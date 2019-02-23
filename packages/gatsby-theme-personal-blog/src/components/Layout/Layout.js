@@ -9,8 +9,6 @@ import Navigator from '../Navigator';
 
 import theme from '../../styles/theme';
 
-console.log(theme);
-
 const Layout = props => {
   const { children } = props;
 
