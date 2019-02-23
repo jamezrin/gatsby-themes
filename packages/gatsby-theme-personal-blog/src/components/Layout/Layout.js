@@ -4,8 +4,8 @@ import { ThemeProvider } from 'emotion-theming';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import GlobalFonts from '../../styles/GlobalFonts';
-
 import Navigator from '../Navigator';
+import UIProvider from '../../context/UIProvider';
 
 import theme from '../../styles/theme';
 
@@ -14,10 +14,12 @@ const Layout = props => {
 
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <GlobalFonts />
-      <Navigator />
-      {children}
+      <UIProvider>
+        <GlobalStyles />
+        <GlobalFonts />
+        <Navigator />
+        {children}
+      </UIProvider>
     </ThemeProvider>
   );
 };

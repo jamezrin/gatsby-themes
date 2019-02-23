@@ -12,6 +12,11 @@ const sizes = {
     '4xl': `4rem`,
     '5xl': `6rem`,
   },
+  dimensions: {
+    infoBox: {
+      width: `20rem`,
+    },
+  },
 };
 
 export default sizes;
