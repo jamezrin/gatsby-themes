@@ -1,11 +1,13 @@
-import colors from './colors'
-import typography from './typography'
-import sizes from './sizes'
-import breakpoints from './breakpoints'
+import breakpoints from './breakpoints';
+import colors from './colors';
+import typography from './typography';
+import sizes from './sizes';
 
-export default const theme = {
+const theme = {
   breakpoints,
   colors,
-  typography
-  sizes
-}
+  sizes,
+  typography,
+};
+
+export default theme;

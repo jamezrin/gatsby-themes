@@ -1,5 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+
+const Item = styled(`li`)`
+  color: ${props => props.theme.colors.palette.black};
+`;
 
 const List = props => {
   const { posts } = props;
@@ -11,7 +16,7 @@ const List = props => {
           frontmatter: { title },
           fields: { date },
         } = post.node;
-        return <li key={date}>{title}</li>;
+        return <Item key={date}>{title}</Item>;
       })}
     </ul>
   );

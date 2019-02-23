@@ -1,21 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ThemeProvider } from 'emotion-theming';
 
 import GlobalStyles from '../../styles/GlobalStyles';
 import GlobalFonts from '../../styles/GlobalFonts';
 
 import Navigator from '../Navigator';
 
+import theme from '../../styles/theme';
+
+console.log(theme);
+
 const Layout = props => {
   const { children } = props;
 
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
       <GlobalFonts />
       <Navigator />
       {children}
-    </div>
+    </ThemeProvider>
   );
 };
 
