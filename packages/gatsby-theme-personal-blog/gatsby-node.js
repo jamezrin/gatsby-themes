@@ -1,5 +1,8 @@
 const { createFilePath } = require(`gatsby-source-filesystem`);
 const fs = require('fs');
+const path = require('path');
+const Promise = require('bluebird');
+const _ = require('lodash');
 
 const SLUG_SEPARATOR = '__';
 
@@ -81,4 +84,54 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       }
     }
   }
+};
+
+exports.createPages = ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
+
+  const postTemplate = require.resolve('./src/templates/PostTemplate.js');
+
+  return graphql(
+    `
+      {
+        allMarkdownRemark(
+          filter: {
+            fields: {
+              source: {
+                in: ["personal-blog-posts", "personal-blog-demo-posts"]
+              }
+              slug: { ne: null }
+            }
+          }
+          limit: 1000
+        ) {
+          edges {
+            node {
+              id
+              fields {
+                slug
+                date
+              }
+            }
+          }
+        }
+      }
+    `
+  ).then(result => {
+    if (result.errors) {
+      throw result.errors;
+    }
+
+    const posts = result.data.allMarkdownRemark.edges;
+
+    posts.forEach((post, index) => {
+      createPage({
+        path: post.node.fields.slug,
+        component: postTemplate,
+        context: {
+          slug: post.node.fields.slug,
+        },
+      });
+    });
+  });
 };
