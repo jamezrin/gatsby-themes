@@ -1,32 +1,28 @@
 import styled from '@emotion/styled';
 
 export const Navigator = styled.nav`
-  background: ${props => props.theme.colors.palette.white};
-  border: 2px solid red;
+  background: ${props => props.theme.palette.white};
   height: 100vh;
   left: 0;
   overflow-y: auto;
   position: fixed;
   top: 0;
   transform: translate3d(0, 0, 0);
-
   will-change: transform;
   width: 100%;
 
   @media (min-width: ${props => props.theme.breakpoints.desktop}) {
     transform: translate3d(
-      ${props => props.theme.sizes.dimensions.infoBox.width},
+      ${props => props.theme.dimensions.infoBox.width},
       0,
       0
     );
-    width: calc(100% - ${props => props.theme.sizes.dimensions.infoBox.width});
+    width: calc(100% - ${props => props.theme.dimensions.infoBox.width});
 
     &.slideOut {
       transition: 0.5s ease;
       transform: translate3d(
-        calc(
-          (100% - ${props => props.theme.sizes.dimensions.infoBox.width}) * -1
-        ),
+        calc((100% - ${props => props.theme.dimensions.infoBox.width}) * -1),
         0,
         0
       );
@@ -35,7 +31,7 @@ export const Navigator = styled.nav`
     &.outside,
     &.slideUp,
     &.aside {
-      width: ${props => props.theme.sizes.dimensions.infoBox.width};
+      width: ${props => props.theme.dimensions.infoBox.width};
     }
 
     &.outside {

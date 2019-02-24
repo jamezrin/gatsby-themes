@@ -34,7 +34,7 @@ const NavigatorComp = props => (
               slug: { ne: null }
             }
           }
-          sort: { fields: [fields___date], order: ASC }
+          sort: { fields: [fields___date], order: DESC }
         ) {
           edges {
             node {
