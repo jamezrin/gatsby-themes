@@ -4,8 +4,6 @@ import { graphql } from 'gatsby';
 
 import Post from '../components/Post';
 
-require('prismjs/themes/prism-okaidia.css');
-
 export const postQuery = graphql`
   query PostBySlug($slug: String!) {
     post: markdownRemark(fields: { slug: { eq: $slug } }) {

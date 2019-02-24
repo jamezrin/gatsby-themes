@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Main, Article } from '../shared/containers';
+import 'prismjs/themes/prism-okaidia.css';
+import Main from '../shared/Main';
+import Article, { ArtTitle, ArtSubtitle, Content } from '../shared/Article';
 
 const Post = props => {
   const {
@@ -11,9 +13,9 @@ const Post = props => {
   return (
     <Main>
       <Article>
-        <h1>{title}</h1>
-        <h2>{subTitle}</h2>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
+        <ArtTitle>{title}</ArtTitle>
+        <ArtSubtitle>{subTitle}</ArtSubtitle>
+        <Content dangerouslySetInnerHTML={{ __html: html }} />
       </Article>
     </Main>
   );
