@@ -12,7 +12,7 @@ import {
   PostDate,
   PostCoverImage,
   TextContainer,
-} from './Styled';
+} from './styled';
 
 const PostListItemComp = ({ post }) => {
   const { title, subTitle, date, slug, imgData } = post;

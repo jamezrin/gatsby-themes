@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
+import Post from '../components/Post';
+
 require('prismjs/themes/prism-okaidia.css');
 
 export const postQuery = graphql`
@@ -30,13 +32,13 @@ const PostTemplate = ({ data }) => {
     },
   } = data;
 
-  return (
-    <article>
-      <h1>{title}</h1>
-      <h2>{subTitle}</h2>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
-    </article>
-  );
+  const post = {
+    title,
+    subTitle,
+    html,
+  };
+
+  return <Post post={post} />;
 };
 
 PostTemplate.propTypes = {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { UIContext } from '../../context/UIState';
 import PostList from './PostList';
-import { Navigator as NavigatorRoot } from './Styled';
+import { Navigator as NavigatorRoot } from './styled';
 import navigatorData from './NavigatorData';
 
 const Navigator = props => {

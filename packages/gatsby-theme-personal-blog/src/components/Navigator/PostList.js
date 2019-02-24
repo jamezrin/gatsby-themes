@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PostListItem from './PostListItem';
-import { PostList as PostListRoot } from './Styled';
+import { PostList as PostListRoot } from './styled';
 
 const PostList = ({ posts }) => {
   return (

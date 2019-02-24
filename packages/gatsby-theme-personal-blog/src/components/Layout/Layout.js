@@ -17,8 +17,8 @@ const Layout = props => {
       <UIProvider>
         <GlobalStyles />
         <GlobalFonts />
-        <Navigator />
         {children}
+        <Navigator />
       </UIProvider>
     </ThemeProvider>
   );
