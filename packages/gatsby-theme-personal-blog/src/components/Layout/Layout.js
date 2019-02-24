@@ -5,7 +5,7 @@ import { ThemeProvider } from 'emotion-theming';
 import GlobalStyles from '../../styles/GlobalStyles';
 import GlobalFonts from '../../styles/GlobalFonts';
 import Navigator from '../Navigator';
-import UIProvider from '../../context/UIProvider';
+import { UIProvider } from '../../context/UIState';
 
 import theme from '../../styles/theme';
 

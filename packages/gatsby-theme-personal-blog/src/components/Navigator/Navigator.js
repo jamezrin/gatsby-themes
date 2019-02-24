@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import { UIContext } from '../../context/UIProvider';
+import { UIContext } from '../../context/UIState';
 import PostList from './PostList';
 import { Navigator } from './Styled';
 

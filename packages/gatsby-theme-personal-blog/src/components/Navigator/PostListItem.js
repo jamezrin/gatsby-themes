@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
-import { UIContext } from '../../context/UIProvider';
+import { UIContext } from '../../context/UIState';
 
 import {
   PostListItem,
@@ -19,11 +19,11 @@ const PostListItemComp = ({ title, subTitle, date, slug, cover }) => {
     childImageSharp: { fixed },
   } = cover;
 
-  const { slideNavigator } = useContext(UIContext);
+  const { slideOutNavigator } = useContext(UIContext);
 
   return (
     <PostListItem>
-      <Link to={slug} onClick={slideNavigator}>
+      <Link to={slug} onClick={slideOutNavigator}>
         <PostCoverImage>
           <Img fixed={fixed} />
         </PostCoverImage>
