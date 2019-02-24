@@ -4,8 +4,6 @@ const useNavigator = () => {
   const [navigatorState, setNavigatorState] = useState(`featured`);
 
   const slideOutNavigator = event => {
-    event.preventDefault();
-
     if (navigatorState === `featured`) {
       setNavigatorState(`slideOut`);
 

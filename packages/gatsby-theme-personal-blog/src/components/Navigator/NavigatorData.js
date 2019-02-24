@@ -2,7 +2,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 const navigatorData = () => {
   const data = useStaticQuery(graphql`
-    query NavigatorQuery2 {
+    query NavigatorQuery {
       posts: allMarkdownRemark(
         filter: {
           fields: {
