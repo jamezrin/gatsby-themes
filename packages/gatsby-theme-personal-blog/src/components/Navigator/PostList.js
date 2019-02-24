@@ -2,36 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import PostListItem from './PostListItem';
-import { PostList } from './Styled';
+import { PostList as PostListRoot } from './Styled';
 
-const PostListComp = ({ posts }) => {
+const PostList = ({ posts }) => {
   return (
-    <PostList>
+    <PostListRoot>
       {posts.map(post => {
-        const {
-          node: {
-            fields: { date, slug },
-            frontmatter: { title, subTitle, cover },
-          },
-        } = post;
+        const { date } = post;
 
-        return (
-          <PostListItem
-            key={date}
-            title={title}
-            subTitle={subTitle}
-            date={date}
-            slug={slug}
-            cover={cover}
-          />
-        );
+        return <PostListItem key={date} post={post} />;
       })}
-    </PostList>
+    </PostListRoot>
   );
 };
 
-PostListComp.propTypes = {
+PostList.propTypes = {
   posts: PropTypes.array.isRequired,
 };
 
-export default PostListComp;
+export default PostList;

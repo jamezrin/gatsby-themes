@@ -14,18 +14,15 @@ import {
   TextContainer,
 } from './Styled';
 
-const PostListItemComp = ({ title, subTitle, date, slug, cover }) => {
-  const {
-    childImageSharp: { fixed },
-  } = cover;
-
+const PostListItemComp = ({ post }) => {
+  const { title, subTitle, date, slug, imgData } = post;
   const { slideOutNavigator } = useContext(UIContext);
 
   return (
     <PostListItem>
       <Link to={slug} onClick={slideOutNavigator}>
         <PostCoverImage>
-          <Img fixed={fixed} />
+          <Img fixed={imgData} />
         </PostCoverImage>
         <TextContainer>
           <PostDate>{date}</PostDate>
@@ -38,11 +35,14 @@ const PostListItemComp = ({ title, subTitle, date, slug, cover }) => {
 };
 
 PostListItemComp.propTypes = {
-  title: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  subTitle: PropTypes.string,
-  slide: PropTypes.func,
+  post: PropTypes.shape({
+    title: PropTypes.string,
+    subTitle: PropTypes.string,
+    date: PropTypes.string,
+    slug: PropTypes.string,
+    imgData: PropTypes.object,
+    category: PropTypes.string,
+  }).isRequired,
 };
 
 export default PostListItemComp;
