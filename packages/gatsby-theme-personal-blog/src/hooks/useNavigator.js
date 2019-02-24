@@ -1,38 +1,33 @@
-import { useState, useRef } from 'react';
-
-const timeouts = [];
+import { useState } from 'react';
 
 const useNavigator = () => {
   const [navigatorState, setNavigatorState] = useState(`featured`);
 
-  const navigatorStateRef = useRef();
-  navigatorStateRef.current = navigatorState;
-
-  const slideNavigator = event => {
+  const slideOutNavigator = event => {
     event.preventDefault();
+
     if (navigatorState === `featured`) {
       setNavigatorState(`slideOut`);
 
-      const timeout = setTimeout(function() {
+      const timeout01 = setTimeout(() => {
         setNavigatorState(`outside`);
-        clearTimeout(timeout);
-
-        const timeout = setTimeout(function() {
-          setNavigatorState(`slideUp`);
-          clearTimeout(timeout);
-
-          const timeout = setTimeout(function() {
-            setNavigatorState(`aside`);
-            clearTimeout(timeout);
-          }, 300);
-        }, 0);
+        clearTimeout(timeout01);
       }, 500);
+
+      const timeout02 = setTimeout(() => {
+        setNavigatorState(`slideUp`);
+        clearTimeout(timeout02);
+      }, 550);
+
+      const timeout03 = setTimeout(() => {
+        setNavigatorState(`aside`);
+        clearTimeout(timeout03);
+      }, 1050);
     }
   };
-
   return {
     navigatorState,
-    slideNavigator,
+    slideOutNavigator,
   };
 };
 
