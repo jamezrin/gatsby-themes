@@ -1,10 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Article = styled.article`
-  padding: ${props => props.theme.spaces.xl};
-`;
-
-export const Main = styled.main`
+const Main = styled.main`
   background: ${props => props.theme.palette.white};
   height: 100vh;
   position: absolute;
@@ -13,3 +9,5 @@ export const Main = styled.main`
   top: 0;
   width: calc(100% - ${props => props.theme.dimensions.infoBox.width});
 `;
+
+export default Main;

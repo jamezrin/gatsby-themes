@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
 
 import PostListItem from './PostListItem';
-import { PostList as PostListRoot } from './styled';
+
+const PostListRoot = styled.ul`
+  list-style: none;
+
+  a {
+    color: ${props => props.theme.colors.header};
+    text-decoration: none;
+  }
+`;
 
 const PostList = ({ posts }) => {
   return (
