@@ -70,6 +70,7 @@
     "react-facebook": "^7.0.2",
     "react-feather": "^1.1.1",
     "react-helmet": "^5.2.0",
+    "react-icons": "^3.4.0",
     "react-lazyload": "^2.5.0",
     "react-loadable-visibility": "^2.5.1",
     "react-obfuscate": "^3.2.0",

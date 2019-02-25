@@ -4,6 +4,8 @@ import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
 
+import { FiCalendar } from 'react-icons/fi';
+
 import { UIContext } from '../../context/UIState';
 
 const PostListItemRoot = styled.li`
@@ -58,11 +60,16 @@ const PostSubtitle = styled.h3`
 `;
 
 const PostDate = styled.span`
+  align-items: center;
   display: flex;
   font-size: ${props => props.theme.fontSizes.xs};
   font-weight: 300;
   letter-spacing: 0.1em;
   margin-bottom: ${props => props.theme.spaces.xs};
+
+  svg {
+    margin-right: ${props => props.theme.spaces.xs};
+  }
 
   .outside &,
   .slideUp &,
@@ -102,7 +109,10 @@ const PostListItem = ({ post }) => {
           <Img fixed={imgData} />
         </PostCoverImage>
         <TextContainer>
-          <PostDate>{date}</PostDate>
+          <PostDate>
+            <FiCalendar />
+            {date}
+          </PostDate>
           <PostTitle>{title}</PostTitle>
           <PostSubtitle>{subTitle}</PostSubtitle>
         </TextContainer>
