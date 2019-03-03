@@ -18,6 +18,7 @@ const Avatar = styled.div`
   margin-bottom: ${props => props.theme.spaces.m};
   top: 0;
   left: 0;
+  transition: 0.5s ease;
   transform: translate(
     calc(
       (${props => props.theme.dimensions.sidebar.width} / 2) -
@@ -26,27 +27,32 @@ const Avatar = styled.div`
     ),
     0
   );
-  transition: 0.5s ease;
 
   .navigatorSlidingUp &,
   .navigatorAside & {
     border-radius: 75% 65%;
     transform: translate(
-        calc(${props => props.theme.dimensions.avatar.owner.width} * -0.2),
-        calc(${props => props.theme.dimensions.avatar.owner.width} * -0.1)
+        calc(${props => props.theme.dimensions.avatar.owner.width} * -0.25),
+        calc(${props => props.theme.dimensions.avatar.owner.width} * -0.2)
       )
-      scale(0.6);
+      scale(0.5);
+  }
+
+  .navigatorAside &,
+  .navigatorFeatured & {
+    transition: none;
   }
 `;
 
 const Title = styled(BaseTitle)`
   font-weight: 300;
   font-size: ${props => props.theme.fontSizes[`2xl`]};
-  position: relative;
+  position: absolute;
   white-space: nowrap;
   display: inline-block;
   left: 0;
-  transition: 0.5s;
+  top: 0;
+  transition: 0.5s ease;
   transform: translateX(
     calc(
       (${props => props.theme.dimensions.sidebar.width} / 2) - 50% -
@@ -57,31 +63,44 @@ const Title = styled(BaseTitle)`
 
   .navigatorSlidingUp &,
   .navigatorAside & {
-    left: 0;
     transform: translateX(0);
+  }
+
+  .navigatorAside &,
+  .navigatorFeatured & {
+    transition: none;
   }
 `;
 
 const Subtitle = styled(Title)`
   font-size: ${props => props.theme.fontSizes.s};
   margin-top: 0.25em;
+  top: calc(
+    ${props => props.theme.fontSizes[`2xl`]} +
+      ${props => props.theme.spaces[`2xs`]}
+  );
+
+  .navigatorSlidingUp &,
+  .navigatorAside & {
+    font-size: ${props => props.theme.fontSizes.xs};
+  }
 `;
 
 const Hgroup = styled.hgroup`
   position: relative;
   transition: 0.5s ease;
-  width: calc(
-    100% - (${props => props.theme.dimensions.avatar.owner.width} * 0.8)
-  );
   transform: translate(
     calc(${props => props.theme.dimensions.avatar.owner.width} * 0.4),
     0
+  );
+  width: calc(
+    100% - (${props => props.theme.dimensions.avatar.owner.width} * 0.8)
   );
 
   .navigatorSlidingUp &,
   .navigatorAside & {
     transform: translate(
-      calc(${props => props.theme.dimensions.avatar.owner.width} * 0.8),
+      calc(${props => props.theme.dimensions.avatar.owner.width} * 0.7),
       calc(
         (
             ${props => props.theme.dimensions.avatar.owner.width} +
@@ -89,6 +108,11 @@ const Hgroup = styled.hgroup`
           ) * -1
       )
     );
+  }
+
+  .navigatorAside &,
+  .navigatorFeatured & {
+    transition: none;
   }
 `;
 

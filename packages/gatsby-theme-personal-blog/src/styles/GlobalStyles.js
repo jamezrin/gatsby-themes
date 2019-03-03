@@ -58,16 +58,8 @@ const GlobalStyles = () => (
        */
 
       body {
-        font-family:
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          Roboto,
-          Helvetica,
-          Arial,
-          sans-serif,
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
           'Segoe UI Symbol';
       }
 
@@ -111,7 +103,8 @@ const GlobalStyles = () => (
       kbd,
       samp,
       pre {
-        font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier, monospace; /* 1 */
+        font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, Courier,
+          monospace; /* 1 */
         font-size: 1em; /* 2 */
       }
 
@@ -168,7 +161,8 @@ const GlobalStyles = () => (
        */
 
       button,
-      select { /* 1 */
+      select {
+        /* 1 */
         text-transform: none;
       }
 
@@ -198,6 +192,19 @@ const GlobalStyles = () => (
       *:before {
         margin: 0;
         padding: 0;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f9f9f9;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ddd;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #999;
       }
     `}
   />

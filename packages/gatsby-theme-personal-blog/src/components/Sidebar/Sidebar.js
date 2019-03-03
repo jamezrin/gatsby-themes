@@ -4,20 +4,16 @@ import styled from '@emotion/styled';
 import Header from './Header';
 
 const Sidebar = styled.aside`
-  --sidebarPadding: ${props => props.theme.dimensions.sidebar.padding};
-  --sidebarWidth: ${props => props.theme.dimensions.sidebar.width};
-  --sidebarBg: ${props => props.theme.palette.white};
-
-  background: var(--sidebarBg);
+  background: ${props => props.theme.palette.white};
   height: 100vh;
   left: 0;
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: var(--sidebarPadding);
+  padding: ${props => props.theme.dimensions.sidebar.padding};
   top: 0;
-  width: var(--sidebarWidth);
+  width: ${props => props.theme.dimensions.sidebar.width};
 
   :after {
     content: '';

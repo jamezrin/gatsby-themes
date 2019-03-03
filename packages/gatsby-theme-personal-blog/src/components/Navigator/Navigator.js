@@ -46,7 +46,7 @@ const Navigator = styled.nav`
     &.slidingIn {
       transition: 0.5s ease;
     }
-
+    ${'' /*
     &.slidingDown,
     &.slidedDown,
     &.slidingUp,
@@ -54,7 +54,7 @@ const Navigator = styled.nav`
       padding: 0;
       width: ${props => props.theme.dimensions.sidebar.width};
       z-index: 1;
-    }
+    } */}
 
     &.aside,
     &.slidingUp,
