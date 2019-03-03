@@ -7,7 +7,7 @@ const Main = styled.main`
   right: 0;
   overflow-y: auto;
   top: 0;
-  width: calc(100% - ${props => props.theme.dimensions.infoBox.width});
+  width: calc(100% - ${props => props.theme.dimensions.sidebar.width});
 `;
 
 export default Main;

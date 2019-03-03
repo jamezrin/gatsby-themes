@@ -1,31 +1,62 @@
 import { useState } from 'react';
 
+let timeouts = [];
+
 const useNavigator = () => {
   const [navigatorState, setNavigatorState] = useState(`featured`);
 
   const slideOutNavigator = event => {
-    if (navigatorState === `featured`) {
-      setNavigatorState(`slideOut`);
+    timeouts.forEach(timeout => clearTimeout(timeout));
+    timeouts = [];
 
-      const timeout01 = setTimeout(() => {
-        setNavigatorState(`outside`);
-        clearTimeout(timeout01);
+    if ([`featured`, `slidingIn`].includes(navigatorState)) {
+      setNavigatorState(`slidingOut`);
+
+      timeouts[0] = setTimeout(() => {
+        setNavigatorState(`slidedDown`);
+        clearTimeout(timeouts[0]);
+
+        timeouts[1] = setTimeout(() => {
+          setNavigatorState(`slidingUp`);
+          clearTimeout(timeouts[1]);
+
+          timeouts[2] = setTimeout(() => {
+            setNavigatorState(`aside`);
+            clearTimeout(timeouts[2]);
+          }, 500);
+        }, 0);
       }, 500);
-
-      const timeout02 = setTimeout(() => {
-        setNavigatorState(`slideUp`);
-        clearTimeout(timeout02);
-      }, 550);
-
-      const timeout03 = setTimeout(() => {
-        setNavigatorState(`aside`);
-        clearTimeout(timeout03);
-      }, 1050);
     }
   };
+
+  const slideInNavigator = event => {
+    timeouts.forEach(timeout => clearTimeout(timeout));
+    timeouts = [];
+
+    if ([`aside`, `slidingUp`].includes(navigatorState)) {
+      setNavigatorState(`slidingDown`);
+
+      timeouts[0] = setTimeout(() => {
+        setNavigatorState(`slidedOut`);
+        clearTimeout(timeouts[0]);
+
+        timeouts[1] = setTimeout(() => {
+          setNavigatorState(`slidingIn`);
+          clearTimeout(timeouts[1]);
+
+          timeouts[2] = setTimeout(() => {
+            setNavigatorState(`featured`);
+            clearTimeout(timeouts[2]);
+          }, 500);
+        }, 0);
+      }, 500);
+    }
+  };
+
   return {
     navigatorState,
     slideOutNavigator,
+    slideInNavigator,
   };
 };
 

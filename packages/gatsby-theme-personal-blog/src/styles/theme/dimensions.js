@@ -1,6 +1,15 @@
 const dimensions = {
-  infoBox: {
+  sidebar: {
     width: `22rem`,
+    padding: `1.5rem`,
+    header: {
+      minHeight: `6rem`,
+    },
+  },
+  avatar: {
+    owner: {
+      width: `4rem`,
+    },
   },
 };
 

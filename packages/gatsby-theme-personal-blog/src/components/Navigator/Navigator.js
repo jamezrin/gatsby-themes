@@ -5,11 +5,12 @@ import { UIContext } from '../../context/UIState';
 import PostList from './PostList';
 import navigatorData from './NavigatorData';
 
-const NavigatorRoot = styled.nav`
+const Navigator = styled.nav`
   background: ${props => props.theme.palette.white};
   height: 100vh;
   left: 0;
   overflow-y: auto;
+  padding: ${props => props.theme.spaces.xs};
   position: fixed;
   top: 0;
   transform: translate3d(0, 0, 0);
@@ -17,52 +18,82 @@ const NavigatorRoot = styled.nav`
   width: 100%;
 
   @media (min-width: ${props => props.theme.breakpoints.desktop}) {
-    transform: translate3d(
-      ${props => props.theme.dimensions.infoBox.width},
-      0,
-      0
-    );
-    width: calc(100% - ${props => props.theme.dimensions.infoBox.width});
+    padding: ${props => props.theme.spaces.m};
 
-    &.slideOut {
-      transition: 0.5s ease;
+    &.slidingIn,
+    &.featured {
       transform: translate3d(
-        calc((100% - ${props => props.theme.dimensions.infoBox.width}) * -1),
+        ${props => props.theme.dimensions.sidebar.width},
         0,
         0
       );
+      width: calc(100% - ${props => props.theme.dimensions.sidebar.width});
     }
 
-    &.outside,
-    &.slideUp,
-    &.aside {
-      width: ${props => props.theme.dimensions.infoBox.width};
+    &.slidingOut,
+    &.slidedOut {
+      transform: translate3d(
+        calc((100% - ${props => props.theme.dimensions.sidebar.width}) * -1),
+        0,
+        0
+      );
+      width: calc(100% - ${props => props.theme.dimensions.sidebar.width});
     }
 
-    &.outside {
-      transform: translate3d(0, 100vh, 0);
-    }
-
-    &.slideUp {
+    &.slidingDown,
+    &.slidingUp,
+    &.slidingOut,
+    &.slidingIn {
       transition: 0.5s ease;
-      transform: translate3d(0, 0, 0);
     }
 
+    &.slidingDown,
+    &.slidedDown,
+    &.slidingUp,
     &.aside {
-      transform: translate3d(0, 0, 0);
+      padding: 0;
+      width: ${props => props.theme.dimensions.sidebar.width};
+      z-index: 1;
+    }
+
+    &.aside,
+    &.slidingUp,
+    &.slidingDown,
+    &.slidedDown {
+      padding: 0;
+      width: ${props => props.theme.dimensions.sidebar.width};
+      z-index: 1;
+    }
+
+    &.slidingDown,
+    &.slidedDown {
+      transform: translate3d(0, 100vh, 0);
+      height: calc(
+        100vh - ${props => props.theme.dimensions.sidebar.header.minHeight}
+      );
+    }
+
+    &.aside,
+    &.slidingUp {
+      transform: translate3d(
+        0,
+        ${props => props.theme.dimensions.sidebar.header.minHeight},
+        0
+      );
+      height: calc(
+        100vh - ${props => props.theme.dimensions.sidebar.header.minHeight}
+      );
     }
   }
 `;
 
-const Navigator = props => {
+export default props => {
   const { navigatorState } = useContext(UIContext);
   const { posts } = navigatorData();
 
   return (
-    <NavigatorRoot className={navigatorState}>
+    <Navigator className={navigatorState}>
       <PostList posts={posts} />
-    </NavigatorRoot>
+    </Navigator>
   );
 };
-
-export default Navigator;
