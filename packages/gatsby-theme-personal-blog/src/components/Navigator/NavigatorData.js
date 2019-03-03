@@ -24,8 +24,8 @@ const navigatorData = () => {
               category
               cover {
                 childImageSharp {
-                  fixed(width: 90, height: 90) {
-                    ...GatsbyImageSharpFixed_withWebp
+                  fluid(maxWidth: 90) {
+                    ...GatsbyImageSharpFluid_withWebp
                   }
                 }
               }
@@ -47,7 +47,7 @@ const navigatorData = () => {
         subTitle,
         category,
         cover: {
-          childImageSharp: { fixed: imgData },
+          childImageSharp: { fluid: imgData },
         },
       },
       fields: { slug, date },

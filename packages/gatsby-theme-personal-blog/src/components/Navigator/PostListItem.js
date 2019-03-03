@@ -14,8 +14,9 @@ const PostListItemRoot = styled.li`
     display: flex;
     padding: ${props => props.theme.spaces.l};
 
-    .outside &,
-    .slideUp &,
+    .slidingDown &,
+    .slidedDown &,
+    .slidingUp &,
     .aside & {
       padding: ${props => props.theme.spaces.s} ${props => props.theme.spaces.l};
     }
@@ -25,8 +26,9 @@ const PostListItemRoot = styled.li`
 const TextContainer = styled.div`
   margin-left: ${props => props.theme.spaces.xl};
 
-  .outside &,
-  .slideUp &,
+  .slidingDown &,
+  .slidedDown &,
+  .slidingUp &,
   .aside & {
     margin-left: ${props => props.theme.spaces.m};
   }
@@ -38,8 +40,9 @@ const PostTitle = styled.h2`
   letter-spacing: -0.02em;
   line-height: 1.1;
 
-  .outside &,
-  .slideUp &,
+  .slidingDown &,
+  .slidedDown &,
+  .slidingUp &,
   .aside & {
     font-size: ${props => props.theme.fontSizes.s};
     font-weight: 400;
@@ -52,8 +55,9 @@ const PostSubtitle = styled.h3`
   line-height: 1.2;
   margin-top: ${props => props.theme.spaces.s};
 
-  .outside &,
-  .slideUp &,
+  .slidingDown &,
+  .slidedDown &,
+  .slidingUp &,
   .aside & {
     display: none;
   }
@@ -71,8 +75,9 @@ const PostDate = styled.span`
     margin-right: ${props => props.theme.spaces.xs};
   }
 
-  .outside &,
-  .slideUp &,
+  .slidingDown &,
+  .slidedDown &,
+  .slidingUp &,
   .aside & {
     display: none;
   }
@@ -85,13 +90,14 @@ const PostCoverImage = styled.div`
   width: 90px;
   flex-shrink: 0;
 
-  img {
+  .gatsby-image-wrapper {
     height: 100%;
     width: 100%;
   }
 
-  .outside &,
-  .slideUp &,
+  .slidingDown &,
+  .slidedDown &,
+  .slidingUp &,
   .aside & {
     height: 30px;
     width: 30px;
@@ -106,7 +112,7 @@ const PostListItem = ({ post }) => {
     <PostListItemRoot>
       <Link to={slug} onClick={slideOutNavigator}>
         <PostCoverImage>
-          <Img fixed={imgData} />
+          <Img fluid={imgData} />
         </PostCoverImage>
         <TextContainer>
           <PostDate>

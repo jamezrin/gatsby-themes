@@ -36,6 +36,12 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        labelFormat: '[local]',
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
