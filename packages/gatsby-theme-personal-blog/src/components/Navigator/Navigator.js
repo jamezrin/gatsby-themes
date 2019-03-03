@@ -16,6 +16,7 @@ const Navigator = styled.nav`
   transform: translate3d(0, 0, 0);
   will-change: transform;
   width: 100%;
+  z-index: 10;
 
   @media (min-width: ${props => props.theme.breakpoints.desktop}) {
     padding: ${props => props.theme.spaces.m};
@@ -62,7 +63,7 @@ const Navigator = styled.nav`
     &.slidedDown {
       padding: 0;
       width: ${props => props.theme.dimensions.sidebar.width};
-      z-index: 1;
+      z-index: 30;
     }
 
     &.slidingDown,

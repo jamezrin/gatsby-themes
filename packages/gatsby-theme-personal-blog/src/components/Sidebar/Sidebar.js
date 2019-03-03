@@ -14,6 +14,7 @@ const Sidebar = styled.aside`
   padding: ${props => props.theme.dimensions.sidebar.padding};
   top: 0;
   width: ${props => props.theme.dimensions.sidebar.width};
+  z-index: 20;
 
   :after {
     content: '';

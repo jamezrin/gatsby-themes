@@ -18,9 +18,9 @@ const Layout = props => {
       <UIProvider location={location}>
         <GlobalStyles />
         <GlobalFonts />
-        {children}
-        <Navigator />
         <Sidebar />
+        <Navigator />
+        {children}
       </UIProvider>
     </ThemeProvider>
   );
