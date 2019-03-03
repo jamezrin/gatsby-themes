@@ -11,11 +11,11 @@ import { UIProvider } from '../../context/UIState';
 import theme from '../../styles/theme';
 
 const Layout = props => {
-  const { children } = props;
+  const { children, location } = props;
 
   return (
     <ThemeProvider theme={theme}>
-      <UIProvider>
+      <UIProvider location={location}>
         <GlobalStyles />
         <GlobalFonts />
         {children}

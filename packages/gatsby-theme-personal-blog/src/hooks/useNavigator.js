@@ -1,9 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { navigate } from 'gatsby';
 
 let timeouts = [];
 
-const useNavigator = () => {
-  const [navigatorState, setNavigatorState] = useState(`featured`);
+const useNavigator = ({ location }) => {
+  const [navigatorState, setNavigatorState] = useState(
+    setInitialState(location)
+  );
+
+  function setInitialState() {
+    if (location.pathname === '/') {
+      return `featured`;
+    } else {
+      return `aside`;
+    }
+  }
+
+  useEffect(() => {
+    if (location.pathname === '/' && navigatorState !== `featured`) {
+      setNavigatorState(`featured`);
+    }
+
+    if (location.pathname !== '/' && navigatorState === `featured`) {
+      setNavigatorState(`aside`);
+    }
+  }, [location]);
 
   const slideOutNavigator = event => {
     timeouts.forEach(timeout => clearTimeout(timeout));
@@ -24,12 +45,16 @@ const useNavigator = () => {
             setNavigatorState(`aside`);
             clearTimeout(timeouts[2]);
           }, 500);
-        }, 0);
+        }, 50);
       }, 500);
     }
   };
 
   const slideInNavigator = event => {
+    if (event) {
+      event.preventDefault();
+    }
+
     timeouts.forEach(timeout => clearTimeout(timeout));
     timeouts = [];
 
@@ -47,8 +72,9 @@ const useNavigator = () => {
           timeouts[2] = setTimeout(() => {
             setNavigatorState(`featured`);
             clearTimeout(timeouts[2]);
+            navigate('/');
           }, 500);
-        }, 0);
+        }, 50);
       }, 500);
     }
   };
