@@ -30,6 +30,20 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `personal-blog-pages`,
+        path: `content/personal-blog/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `personal-blog-demo-pages`,
+        path: `${__dirname}/content/pages`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/components/Layout`),

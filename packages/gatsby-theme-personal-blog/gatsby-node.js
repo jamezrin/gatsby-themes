@@ -4,13 +4,14 @@ const path = require('path');
 const Promise = require('bluebird');
 const _ = require('lodash');
 
-const SLUG_SEPARATOR = '__';
+const SLUG_SEPARATOR = '_';
 
 exports.onPreBootstrap = ({ reporter }) => {
   const dirs = [
     'content',
     'content/personal-blog',
     'content/personal-blog/posts',
+    'content/personal-blog/pages',
   ];
 
   dirs.forEach(dir => {
@@ -21,7 +22,8 @@ exports.onPreBootstrap = ({ reporter }) => {
   });
 };
 
-let userCreatedOwnContent = false;
+let userCreatedOwnPosts = false;
+let userCreatedOwnPages = false;
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
@@ -32,14 +34,17 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
     const source = fileNode.sourceInstanceName;
 
-    const eligibleSources = ['personal-blog-posts', 'personal-blog-demo-posts'];
+    const eligiblePostSources = [
+      'personal-blog-posts',
+      'personal-blog-demo-posts',
+    ];
 
-    if (eligibleSources.includes(source)) {
+    if (eligiblePostSources.includes(source)) {
       if (source === 'personal-blog-posts') {
-        userCreatedOwnContent = true;
+        userCreatedOwnPosts = true;
       }
 
-      if (userCreatedOwnContent && source === 'personal-blog-demo-posts') {
+      if (userCreatedOwnPosts && source === 'personal-blog-demo-posts') {
         return;
       }
 
@@ -83,6 +88,61 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         });
       }
     }
+
+    const eligiblePageSources = [
+      'personal-blog-pages',
+      'personal-blog-demo-pages',
+    ];
+
+    if (eligiblePageSources.includes(source)) {
+      if (source === 'personal-blog-pages') {
+        userCreatedOwnPages = true;
+      }
+
+      if (userCreatedOwnPages && source === 'personal-blog-demo-pages') {
+        return;
+      }
+
+      const separatorExists = ~filePath.indexOf(SLUG_SEPARATOR);
+
+      let slug;
+      let order;
+
+      if (separatorExists) {
+        const separatorPosition = filePath.indexOf(SLUG_SEPARATOR);
+        const slugBeginning = separatorPosition + SLUG_SEPARATOR.length;
+        slug =
+          separatorPosition === 1
+            ? null
+            : `/${filePath.substring(slugBeginning)}`;
+        order = filePath.substring(1, separatorPosition);
+      } else {
+        slug = filePath;
+        order = null;
+      }
+
+      createNodeField({
+        node,
+        name: `source`,
+        value: source,
+      });
+
+      if (slug) {
+        createNodeField({
+          node,
+          name: `slug`,
+          value: slug,
+        });
+      }
+
+      if (order) {
+        createNodeField({
+          node,
+          name: `order`,
+          value: order,
+        });
+      }
+    }
   }
 };
 
@@ -90,6 +150,7 @@ exports.createPages = ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   const postTemplate = require.resolve('./src/templates/PostTemplate.js');
+  const pageTemplate = require.resolve('./src/templates/PageTemplate.js');
 
   return graphql(
     `
@@ -98,7 +159,12 @@ exports.createPages = ({ graphql, actions, reporter }) => {
           filter: {
             fields: {
               source: {
-                in: ["personal-blog-posts", "personal-blog-demo-posts"]
+                in: [
+                  "personal-blog-posts"
+                  "personal-blog-demo-posts"
+                  "personal-blog-pages"
+                  "personal-blog-demo-pages"
+                ]
               }
               slug: { ne: null }
             }
@@ -110,7 +176,9 @@ exports.createPages = ({ graphql, actions, reporter }) => {
               id
               fields {
                 slug
+                source
                 date
+                order
               }
             }
           }
@@ -122,14 +190,18 @@ exports.createPages = ({ graphql, actions, reporter }) => {
       throw result.errors;
     }
 
-    const posts = result.data.allMarkdownRemark.edges;
+    const edges = result.data.allMarkdownRemark.edges;
 
-    posts.forEach((post, index) => {
+    edges.forEach((edge, index) => {
       createPage({
-        path: post.node.fields.slug,
-        component: postTemplate,
+        path: edge.node.fields.slug,
+        component:
+          edge.node.fields.source === 'personal-blog-posts' ||
+          edge.node.fields.source === 'personal-blog-demo-posts'
+            ? postTemplate
+            : pageTemplate,
         context: {
-          slug: post.node.fields.slug,
+          slug: edge.node.fields.slug,
         },
       });
     });
