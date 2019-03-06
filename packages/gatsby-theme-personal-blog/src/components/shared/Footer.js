@@ -6,6 +6,7 @@ import footerCredits from '../../data/footerCredits';
 
 const Footer = styled.footer`
   padding: ${props => props.theme.spaces.xl};
+  color: ${props => props.theme.colors.lightText};
 
   &.inSidebar {
     position: absolute;
@@ -23,7 +24,7 @@ const Footer = styled.footer`
 `;
 
 const Credits = styled.div`
-  font-size: ${props => props.theme.fontSizes.xs};
+  font-size: ${props => props.theme.fontSizes[`2xs`]};
 
   ul {
     list-style: none;
@@ -34,7 +35,8 @@ const Credits = styled.div`
 
   li {
     text-align: center;
-    padding: 0 ${props => props.theme.spaces.xs};
+    padding: ${props => props.theme.spaces[`3xs`]}
+      ${props => props.theme.spaces.xs};
   }
 
   .inSidebar & {
