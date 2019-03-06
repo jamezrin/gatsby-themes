@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import 'prismjs/themes/prism-okaidia.css';
+import Positioner from '../shared/Positioner';
 import Main from '../shared/Main';
+import Footer from '../shared/Footer';
 import Article, { ArtTitle, ArtSubtitle, Content } from '../shared/Article';
 
 const Post = props => {
@@ -11,13 +13,16 @@ const Post = props => {
   } = props;
 
   return (
-    <Main>
-      <Article>
-        <ArtTitle>{title}</ArtTitle>
-        <ArtSubtitle>{subTitle}</ArtSubtitle>
-        <Content dangerouslySetInnerHTML={{ __html: html }} />
-      </Article>
-    </Main>
+    <Positioner>
+      <Main>
+        <Article>
+          <ArtTitle>{title}</ArtTitle>
+          <ArtSubtitle>{subTitle}</ArtSubtitle>
+          <Content dangerouslySetInnerHTML={{ __html: html }} />
+        </Article>
+      </Main>
+      <Footer />
+    </Positioner>
   );
 };
 

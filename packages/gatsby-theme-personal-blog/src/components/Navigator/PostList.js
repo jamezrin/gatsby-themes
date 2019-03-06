@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import PostListItem from './PostListItem';
 
-const PostListRoot = styled.ul`
+const PostList = styled.ul`
   list-style: none;
 
   a {
@@ -13,20 +13,20 @@ const PostListRoot = styled.ul`
   }
 `;
 
-const PostList = ({ posts }) => {
+const PostListComponent = ({ posts }) => {
   return (
-    <PostListRoot>
+    <PostList>
       {posts.map(post => {
         const { date } = post;
 
         return <PostListItem key={date} post={post} />;
       })}
-    </PostListRoot>
+    </PostList>
   );
 };
 
-PostList.propTypes = {
+PostListComponent.propTypes = {
   posts: PropTypes.array.isRequired,
 };
 
-export default PostList;
+export default PostListComponent;

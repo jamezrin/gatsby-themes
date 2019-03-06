@@ -1,8 +1,15 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { FiGithub, FiLinkedin, FiTwitter, FiLink } from 'react-icons/fi';
+import {
+  FiGithub,
+  FiLinkedin,
+  FiTwitter,
+  FiLink,
+  FiFacebook,
+} from 'react-icons/fi';
 
 const icons = {
+  facebook: FiFacebook,
   github: FiGithub,
   linkedin: FiLinkedin,
   twitter: FiTwitter,

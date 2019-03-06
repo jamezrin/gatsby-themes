@@ -1,10 +1,10 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-const sidebarInfo = () => {
+const footerCredits = () => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/fragments/sidebar-info/" } }
+        filter: { fileAbsolutePath: { regex: "/fragments/footer-credits/" } }
       ) {
         edges {
           node {
@@ -33,4 +33,4 @@ const sidebarInfo = () => {
   }
 };
 
-export default sidebarInfo;
+export default footerCredits;
