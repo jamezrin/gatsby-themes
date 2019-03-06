@@ -12,6 +12,7 @@ exports.onPreBootstrap = ({ reporter }) => {
     'content/personal-blog',
     'content/personal-blog/posts',
     'content/personal-blog/pages',
+    'content/personal-blog/fragments',
   ];
 
   dirs.forEach(dir => {
@@ -33,6 +34,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     const filePath = createFilePath({ node, getNode });
 
     const source = fileNode.sourceInstanceName;
+
+    createNodeField({
+      node,
+      name: `source`,
+      value: source,
+    });
 
     const eligiblePostSources = [
       'personal-blog-posts',
@@ -65,12 +72,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         slug = filePath;
         date = null;
       }
-
-      createNodeField({
-        node,
-        name: `source`,
-        value: source,
-      });
 
       if (slug) {
         createNodeField({
@@ -120,12 +121,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         slug = filePath;
         order = null;
       }
-
-      createNodeField({
-        node,
-        name: `source`,
-        value: source,
-      });
 
       if (slug) {
         createNodeField({

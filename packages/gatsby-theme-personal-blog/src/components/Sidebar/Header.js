@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 
 import { BaseTitle } from '../shared/Typography';
-import { UIContext } from '../../context/UIState';
 
 const Header = styled.header`
   width: 100%;
@@ -87,6 +86,7 @@ const Subtitle = styled(Title)`
 `;
 
 const Hgroup = styled.hgroup`
+  height: 5rem;
   position: relative;
   transition: 0.5s ease;
   transform: translate(
@@ -116,14 +116,11 @@ const Hgroup = styled.hgroup`
   }
 `;
 
-const addPrefix = (prefix, str) =>
-  prefix + str.charAt(0).toUpperCase() + str.slice(1);
-
 export default props => {
-  const { navigatorState, slideInNavigator } = useContext(UIContext);
+  const { slideInNavigator } = props;
 
   return (
-    <Header className={addPrefix('navigator', navigatorState)}>
+    <Header>
       <Link to="/" onClick={slideInNavigator}>
         <Avatar />
         <Hgroup>
