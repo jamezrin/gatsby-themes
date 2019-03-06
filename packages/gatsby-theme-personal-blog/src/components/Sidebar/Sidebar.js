@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { UIContext } from '../../context/UIState';
 import Header from './Header';
 import SocialLinks from './SocialLinks';
+import Footer from '../shared/Footer';
 import Info from './Info';
 
 const Sidebar = styled.aside`
@@ -18,6 +19,10 @@ const Sidebar = styled.aside`
   top: 0;
   width: ${props => props.theme.dimensions.sidebar.width};
   z-index: 20;
+
+  a {
+    text-decoration: none;
+  }
 
   :after {
     content: '';
@@ -43,6 +48,7 @@ export default props => {
       <Header slideInNavigator={slideInNavigator} />
       <Info />
       <SocialLinks />
+      <Footer inSidebar />
     </Sidebar>
   );
 };

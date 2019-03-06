@@ -4,7 +4,7 @@ const authorNote = () => {
   const data = useStaticQuery(graphql`
     query {
       allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/fragments/authorNote/" } }
+        filter: { fileAbsolutePath: { regex: "/fragments/author-note/" } }
       ) {
         edges {
           node {

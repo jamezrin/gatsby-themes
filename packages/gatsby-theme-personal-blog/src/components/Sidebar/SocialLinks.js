@@ -9,7 +9,8 @@ const SocialLinks = styled.ul`
 `;
 
 const SocialLink = styled.li`
-  margin: ${props => props.theme.spaces.xl} ${props => props.theme.spaces.xs} 0;
+  margin: ${props => props.theme.spaces.xl}
+    ${props => props.theme.spaces[`2xs`]} 0;
   opacity: 1;
   transition: 0.5s ease;
 
@@ -26,9 +27,25 @@ const SocialLink = styled.li`
     justify-content: center;
     color: #999;
 
+    :hover {
+      svg {
+        transform: scale(1.2);
+      }
+    }
+
     svg {
       width: 60%;
       height: 60%;
+      transition: 0.5s ease;
+      transform: scale(1);
+
+      .navigatorSlidingDown & {
+        transform: scale(1.2);
+      }
+
+      .navigatorSlidingUp & {
+        transform: scale(0.5);
+      }
     }
   }
 `;
