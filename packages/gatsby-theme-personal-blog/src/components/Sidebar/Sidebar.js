@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from '@emotion/styled';
 
+import { UIContext } from '../../context/UIState';
 import Header from './Header';
+import SocialLinks from './SocialLinks';
+import Info from './Info';
 
 const Sidebar = styled.aside`
   background: ${props => props.theme.palette.white};
@@ -19,7 +22,7 @@ const Sidebar = styled.aside`
   :after {
     content: '';
     position: absolute;
-    right: 0;
+    right: -1px;
     display: flex;
     flex-direction: column;
     top: ${props => props.theme.spaces.xl};
@@ -29,10 +32,17 @@ const Sidebar = styled.aside`
   }
 `;
 
+const addPrefix = (prefix, str) =>
+  prefix + str.charAt(0).toUpperCase() + str.slice(1);
+
 export default props => {
+  const { navigatorState, slideInNavigator } = useContext(UIContext);
+
   return (
-    <Sidebar>
-      <Header />
+    <Sidebar className={addPrefix('navigator', navigatorState)}>
+      <Header slideInNavigator={slideInNavigator} />
+      <Info />
+      <SocialLinks />
     </Sidebar>
   );
 };

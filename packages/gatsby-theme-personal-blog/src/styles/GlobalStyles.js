@@ -195,10 +195,10 @@ const GlobalStyles = () => (
       }
 
       ::-webkit-scrollbar {
-        width: 7px;
+        width: 6px;
       }
       ::-webkit-scrollbar-track {
-        background: #f9f9f9;
+        background: #fff;
       }
       ::-webkit-scrollbar-thumb {
         background: #ddd;

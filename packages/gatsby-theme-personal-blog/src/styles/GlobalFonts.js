@@ -5,7 +5,7 @@ import { Global, css } from '@emotion/core';
 const GlobalFonts = () => (
   <Global
     styles={css`
-      html {
+      body {
         font-family: 'Open Sans', Arial, sans-serif;
         font-size: 16px;
       }
