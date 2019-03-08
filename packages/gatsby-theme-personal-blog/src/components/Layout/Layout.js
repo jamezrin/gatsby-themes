@@ -6,6 +6,9 @@ import GlobalStyles from '../../styles/GlobalStyles';
 import GlobalFonts from '../../styles/GlobalFonts';
 import Navigator from '../Navigator';
 import Sidebar from '../Sidebar';
+import Page from '../shared/Page';
+import Footer from '../shared/Footer';
+import Main from '../shared/Main';
 import { UIProvider } from '../../context/UIState';
 
 import theme from '../../styles/theme';
@@ -20,7 +23,10 @@ const Layout = props => {
         <GlobalFonts />
         <Sidebar />
         <Navigator />
-        {children}
+        <Page>
+          <Main>{children}</Main>
+          <Footer />
+        </Page>
       </UIProvider>
     </ThemeProvider>
   );

@@ -38,20 +38,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `personal-blog-pages`,
-        path: `content/personal-blog/pages`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `personal-blog-demo-pages`,
-        path: `${__dirname}/content/pages`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `personal-blog-demo-fragments`,
         path: `content/personal-blog/fragments`,
       },
@@ -74,6 +60,10 @@ module.exports = {
       options: {
         labelFormat: '[local]',
       },
+    },
+    {
+      resolve: `gatsby-mdx`,
+      options: {},
     },
     {
       resolve: `gatsby-transformer-remark`,

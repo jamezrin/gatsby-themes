@@ -24,7 +24,6 @@ exports.onPreBootstrap = ({ reporter }) => {
 };
 
 let userCreatedOwnPosts = false;
-let userCreatedOwnPages = false;
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
@@ -89,55 +88,6 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
         });
       }
     }
-
-    const eligiblePageSources = [
-      'personal-blog-pages',
-      'personal-blog-demo-pages',
-    ];
-
-    if (eligiblePageSources.includes(source)) {
-      if (source === 'personal-blog-pages') {
-        userCreatedOwnPages = true;
-      }
-
-      if (userCreatedOwnPages && source === 'personal-blog-demo-pages') {
-        return;
-      }
-
-      const separatorExists = ~filePath.indexOf(SLUG_SEPARATOR);
-
-      let slug;
-      let order;
-
-      if (separatorExists) {
-        const separatorPosition = filePath.indexOf(SLUG_SEPARATOR);
-        const slugBeginning = separatorPosition + SLUG_SEPARATOR.length;
-        slug =
-          separatorPosition === 1
-            ? null
-            : `/${filePath.substring(slugBeginning)}`;
-        order = filePath.substring(1, separatorPosition);
-      } else {
-        slug = filePath;
-        order = null;
-      }
-
-      if (slug) {
-        createNodeField({
-          node,
-          name: `slug`,
-          value: slug,
-        });
-      }
-
-      if (order) {
-        createNodeField({
-          node,
-          name: `order`,
-          value: order,
-        });
-      }
-    }
   }
 };
 
@@ -145,7 +95,6 @@ exports.createPages = ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
   const postTemplate = require.resolve('./src/templates/PostTemplate.js');
-  const pageTemplate = require.resolve('./src/templates/PageTemplate.js');
 
   return graphql(
     `
@@ -154,12 +103,7 @@ exports.createPages = ({ graphql, actions, reporter }) => {
           filter: {
             fields: {
               source: {
-                in: [
-                  "personal-blog-posts"
-                  "personal-blog-demo-posts"
-                  "personal-blog-pages"
-                  "personal-blog-demo-pages"
-                ]
+                in: ["personal-blog-posts", "personal-blog-demo-posts"]
               }
               slug: { ne: null }
             }
@@ -173,7 +117,6 @@ exports.createPages = ({ graphql, actions, reporter }) => {
                 slug
                 source
                 date
-                order
               }
             }
           }
@@ -190,11 +133,7 @@ exports.createPages = ({ graphql, actions, reporter }) => {
     edges.forEach((edge, index) => {
       createPage({
         path: edge.node.fields.slug,
-        component:
-          edge.node.fields.source === 'personal-blog-posts' ||
-          edge.node.fields.source === 'personal-blog-demo-posts'
-            ? postTemplate
-            : pageTemplate,
+        component: postTemplate,
         context: {
           slug: edge.node.fields.slug,
         },
