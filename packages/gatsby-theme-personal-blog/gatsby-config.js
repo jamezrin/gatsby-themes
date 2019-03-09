@@ -61,17 +61,13 @@ module.exports = {
         labelFormat: '[local]',
       },
     },
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-mdx`,
-      options: {},
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [
-          `gatsby-plugin-sharp`,
+        gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
               backgroundColor: 'transparent',
@@ -80,6 +76,7 @@ module.exports = {
         ],
       },
     },
+
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,

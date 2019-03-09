@@ -30,7 +30,7 @@ const useNavigator = ({ location }) => {
     timeouts.forEach(timeout => clearTimeout(timeout));
     timeouts = [];
 
-    if ([`featured`, `slidingIn`].includes(navigatorState)) {
+    if (navigatorState === `featured`) {
       setNavigatorState(`slidingOut`);
 
       timeouts[0] = setTimeout(() => {
@@ -47,6 +47,8 @@ const useNavigator = ({ location }) => {
           }, 500);
         }, 50);
       }, 500);
+    } else {
+      setNavigatorState(`aside`);
     }
   };
 
@@ -58,7 +60,7 @@ const useNavigator = ({ location }) => {
     timeouts.forEach(timeout => clearTimeout(timeout));
     timeouts = [];
 
-    if ([`aside`, `slidingUp`].includes(navigatorState)) {
+    if (navigatorState === `aside`) {
       setNavigatorState(`slidingDown`);
 
       timeouts[0] = setTimeout(() => {
@@ -76,6 +78,8 @@ const useNavigator = ({ location }) => {
           }, 500);
         }, 50);
       }, 500);
+    } else {
+      setNavigatorState(`featured`);
     }
   };
 

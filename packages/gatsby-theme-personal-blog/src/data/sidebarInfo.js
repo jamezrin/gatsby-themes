@@ -3,12 +3,14 @@ import { useStaticQuery, graphql } from 'gatsby';
 const sidebarInfo = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMarkdownRemark(
+      allMdx(
         filter: { fileAbsolutePath: { regex: "/fragments/sidebar-info/" } }
       ) {
         edges {
           node {
-            html
+            code {
+              body
+            }
             fields {
               source
             }
@@ -19,17 +21,17 @@ const sidebarInfo = () => {
   `);
 
   const {
-    allMarkdownRemark: { edges },
+    allMdx: { edges },
   } = data;
 
   const notes = edges.map(edge => edge.node);
 
   if (notes.length === 1) {
-    return notes[0].html;
+    return notes[0].code.body;
   } else {
     return notes.find(note => {
       return note.fields.source === 'personal-blog-fragments';
-    }).html;
+    }).code.body;
   }
 };
 

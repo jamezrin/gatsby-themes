@@ -28,7 +28,7 @@ let userCreatedOwnPosts = false;
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const fileNode = getNode(node.parent);
     const filePath = createFilePath({ node, getNode });
 
@@ -99,7 +99,7 @@ exports.createPages = ({ graphql, actions, reporter }) => {
   return graphql(
     `
       {
-        allMarkdownRemark(
+        allMdx(
           filter: {
             fields: {
               source: {
@@ -128,7 +128,7 @@ exports.createPages = ({ graphql, actions, reporter }) => {
       throw result.errors;
     }
 
-    const edges = result.data.allMarkdownRemark.edges;
+    const edges = result.data.allMdx.edges;
 
     edges.forEach((edge, index) => {
       createPage({

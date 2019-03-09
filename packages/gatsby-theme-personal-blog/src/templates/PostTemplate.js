@@ -6,10 +6,11 @@ import Post from '../components/Post';
 
 export const postQuery = graphql`
   query PostBySlug($slug: String!) {
-    post: markdownRemark(fields: { slug: { eq: $slug } }) {
+    post: mdx(fields: { slug: { eq: $slug } }) {
       id
-      html
-      htmlAst
+      code {
+        body
+      }
       fields {
         slug
         date
@@ -25,7 +26,7 @@ export const postQuery = graphql`
 const PostTemplate = ({ data }) => {
   const {
     post: {
-      html,
+      code: { body },
       frontmatter: { title, subTitle },
     },
   } = data;
@@ -33,7 +34,7 @@ const PostTemplate = ({ data }) => {
   const post = {
     title,
     subTitle,
-    html,
+    body,
   };
 
   return <Post post={post} />;

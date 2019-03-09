@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 const navigatorData = () => {
   const data = useStaticQuery(graphql`
     query {
-      posts: allMarkdownRemark(
+      posts: allMdx(
         filter: {
           fields: {
             source: { in: ["personal-blog-posts", "personal-blog-demo-posts"] }
