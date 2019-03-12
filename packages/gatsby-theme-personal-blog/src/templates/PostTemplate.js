@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import Post from '../components/Post';
+import Article from '../components/shared/Article';
 
 export const postQuery = graphql`
   query PostBySlug($slug: String!) {
@@ -37,7 +37,7 @@ const PostTemplate = ({ data }) => {
     body,
   };
 
-  return <Post post={post} />;
+  return <Article post={post} />;
 };
 
 PostTemplate.propTypes = {

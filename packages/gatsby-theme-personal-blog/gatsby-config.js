@@ -62,6 +62,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-mdx`,
       options: {
@@ -70,15 +71,22 @@ module.exports = {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
+              sizeByPixelDensity: true,
               backgroundColor: 'transparent',
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
             },
           },
         ],
       },
     },
 
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
   ],

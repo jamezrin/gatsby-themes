@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const Page = styled.div`
+const PageContainer = styled.div`
   background: ${props => props.theme.palette.white};
   height: 100vh;
   position: absolute;
@@ -10,4 +10,4 @@ const Page = styled.div`
   width: calc(100% - ${props => props.theme.dimensions.sidebar.width});
 `;
 
-export default Page;
+export default PageContainer;

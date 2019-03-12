@@ -3,18 +3,18 @@ import { navigate } from 'gatsby';
 
 let timeouts = [];
 
+function setInitialState(location) {
+  if (location.pathname === '/') {
+    return `featured`;
+  } else {
+    return `aside`;
+  }
+}
+
 const useNavigator = ({ location }) => {
   const [navigatorState, setNavigatorState] = useState(
     setInitialState(location)
   );
-
-  function setInitialState() {
-    if (location.pathname === '/') {
-      return `featured`;
-    } else {
-      return `aside`;
-    }
-  }
 
   useEffect(() => {
     if (location.pathname === '/' && navigatorState !== `featured`) {
