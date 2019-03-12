@@ -17,6 +17,7 @@ const Avatar = styled.div`
   margin-bottom: ${props => props.theme.spaces.m};
   top: 0;
   left: 0;
+  will-change: transform;
   transition: 0.5s ease;
   transform: translate(
     calc(
@@ -96,6 +97,7 @@ const Hgroup = styled.hgroup`
   width: calc(
     100% - (${props => props.theme.dimensions.avatar.owner.width} * 0.8)
   );
+  will-change: transform;
 
   .navigatorSlidingUp &,
   .navigatorAside & {

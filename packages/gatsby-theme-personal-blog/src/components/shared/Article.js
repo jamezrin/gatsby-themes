@@ -1,4 +1,7 @@
+import React from 'react';
 import styled from '@emotion/styled';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import { MDXProvider } from '@mdx-js/tag';
 
 export const ArtTitle = styled.h1`
   color: ${props => props.theme.colors.header};
@@ -9,7 +12,7 @@ export const ArtTitle = styled.h1`
   margin: 0 ${props => props.theme.spaces[`4xl`]};
 `;
 
-export const ArtSubtitle = styled.h1`
+export const ArtSubtitle = styled.h2`
   color: ${props => props.theme.colors.header};
   font-size: ${props => props.theme.fontSizes[`3xl`]};
   line-height: 1.2;
@@ -20,13 +23,12 @@ export const ArtSubtitle = styled.h1`
 `;
 
 export const Content = styled.div`
-  margin: ${props => props.theme.spaces.xl}
-    ${props => props.theme.spaces[`4xl`]};
-
   p {
     color: ${props => props.theme.colors.text};
     font-size: ${props => props.theme.fontSizes.m};
     line-height: 1.6;
+    margin: ${props => props.theme.spaces.xl}
+      ${props => props.theme.spaces[`4xl`]};
     margin-bottom: ${props => props.theme.spaces.l};
   }
 
@@ -45,6 +47,38 @@ export const Content = styled.div`
     font-size: ${props => props.theme.fontSizes.xl};
     margin: ${props => props.theme.spaces.xl} 0 ${props => props.theme.spaces.l};
   }
+`;
+
+const ArticleRoot = styled.article`
+  max-width: 55rem;
+  margin: 0 auto;
+  color: ${props => props.theme.colors.text};
+  font-size: ${props => props.theme.fontSizes.m};
+  padding: ${props => props.theme.spaces[`3xl`]}
+    ${props => props.theme.spaces[`2xl`]};
+
+  > * {
+    margin: ${props => props.theme.spaces.xl}
+      ${props => props.theme.spaces[`4xl`]};
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: ${props => props.theme.spaces.l};
+  }
+
+  ul {
+    padding-left: ${props => props.theme.spaces.l};
+
+    li {
+      margin: ${props => props.theme.spaces.s} 0;
+    }
+  }
+
+  pre {
+    margin-top: ${props => props.theme.spaces[`2xl`]};
+    margin-bottom: ${props => props.theme.spaces[`2xl`]};
+  }
 
   .gatsby-resp-image-link {
     border-radius: 6px;
@@ -53,11 +87,27 @@ export const Content = styled.div`
   }
 `;
 
-const Article = styled.article`
-  max-width: 55rem;
-  margin: 0 auto;
-  padding: ${props => props.theme.spaces[`3xl`]}
-    ${props => props.theme.spaces[`2xl`]};
-`;
+const Article = ({ children, post = {} }) => {
+  const { title, subTitle, body } = post;
+
+  return (
+    <MDXProvider
+      components={{
+        h1: ArtTitle,
+        h2: ArtSubtitle,
+      }}
+    >
+      {body ? (
+        <ArticleRoot>
+          <ArtTitle>{title}</ArtTitle>
+          {subTitle && <ArtSubtitle>{subTitle}</ArtSubtitle>}
+          <MDXRenderer>{body}</MDXRenderer>
+        </ArticleRoot>
+      ) : (
+        <ArticleRoot>{children}</ArticleRoot>
+      )}
+    </MDXProvider>
+  );
+};
 
 export default Article;

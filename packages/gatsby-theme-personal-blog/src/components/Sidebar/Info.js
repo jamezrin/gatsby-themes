@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
 import sidebarInfo from '../../data/sidebarInfo';
 
@@ -20,5 +21,9 @@ const Info = styled.div`
 export default props => {
   const info = sidebarInfo();
 
-  return <Info dangerouslySetInnerHTML={{ __html: info }} />;
+  return (
+    <Info>
+      <MDXRenderer>{info}</MDXRenderer>
+    </Info>
+  );
 };

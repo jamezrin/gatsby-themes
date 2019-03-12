@@ -38,20 +38,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `personal-blog-pages`,
-        path: `content/personal-blog/pages`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `personal-blog-demo-pages`,
-        path: `${__dirname}/content/pages`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `personal-blog-demo-fragments`,
         path: `content/personal-blog/fragments`,
       },
@@ -75,23 +61,32 @@ module.exports = {
         labelFormat: '[local]',
       },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-mdx`,
       options: {
-        plugins: [
-          `gatsby-plugin-sharp`,
+        gatsbyRemarkPlugins: [
           {
-            resolve: `gatsby-remark-images`,
+            resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
+              sizeByPixelDensity: true,
               backgroundColor: 'transparent',
+            },
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
             },
           },
         ],
       },
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
+
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-catch-links`,
   ],

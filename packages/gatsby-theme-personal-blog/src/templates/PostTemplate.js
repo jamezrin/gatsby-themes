@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
-import Post from '../components/Post';
+import Article from '../components/shared/Article';
 
 export const postQuery = graphql`
   query PostBySlug($slug: String!) {
-    post: markdownRemark(fields: { slug: { eq: $slug } }) {
+    post: mdx(fields: { slug: { eq: $slug } }) {
       id
-      html
-      htmlAst
+      code {
+        body
+      }
       fields {
         slug
         date
@@ -25,7 +26,7 @@ export const postQuery = graphql`
 const PostTemplate = ({ data }) => {
   const {
     post: {
-      html,
+      code: { body },
       frontmatter: { title, subTitle },
     },
   } = data;
@@ -33,10 +34,10 @@ const PostTemplate = ({ data }) => {
   const post = {
     title,
     subTitle,
-    html,
+    body,
   };
 
-  return <Post post={post} />;
+  return <Article post={post} />;
 };
 
 PostTemplate.propTypes = {

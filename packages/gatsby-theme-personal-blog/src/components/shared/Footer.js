@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
 import footerCredits from '../../data/footerCredits';
 
@@ -51,7 +52,9 @@ const FooterComponent = ({ inSidebar = false }) => {
 
   return (
     <Footer className={inSidebar ? `inSidebar` : ``}>
-      <Credits dangerouslySetInnerHTML={{ __html: credits }} />
+      <Credits>
+        <MDXRenderer>{credits}</MDXRenderer>
+      </Credits>
     </Footer>
   );
 };

@@ -13,82 +13,69 @@ const Navigator = styled.nav`
   padding: ${props => props.theme.spaces.xs};
   position: fixed;
   top: 0;
-  transform: translate3d(0, 0, 0);
+  transform: translate(0, 0);
   will-change: transform;
   width: 100%;
-  z-index: 10;
+  z-index: 1;
 
   @media (min-width: ${props => props.theme.breakpoints.desktop}) {
     padding: ${props => props.theme.spaces.m};
 
+    &.featured,
+    &.slidedOut,
     &.slidingIn,
-    &.featured {
-      transform: translate3d(
-        ${props => props.theme.dimensions.sidebar.width},
-        0,
-        0
-      );
+    &.slidingOut {
       width: calc(100% - ${props => props.theme.dimensions.sidebar.width});
     }
 
-    &.slidingOut,
-    &.slidedOut {
-      transform: translate3d(
-        calc((100% - ${props => props.theme.dimensions.sidebar.width}) * -1),
-        0,
-        0
-      );
-      width: calc(100% - ${props => props.theme.dimensions.sidebar.width});
-    }
-
-    &.slidingDown,
-    &.slidingUp,
-    &.slidingOut,
+    &.featured,
     &.slidingIn {
-      transition: 0.5s ease;
+      transform: translate(${props => props.theme.dimensions.sidebar.width}, 0);
     }
-    ${'' /*
-    &.slidingDown,
-    &.slidedDown,
-    &.slidingUp,
-    &.aside {
-      padding: 0;
-      width: ${props => props.theme.dimensions.sidebar.width};
-      z-index: 1;
-    } */}
+
+    &.slidedOut,
+    &.slidingOut {
+      transform: translate(
+        calc((100% - ${props => props.theme.dimensions.sidebar.width}) * -1),
+        0
+      );
+    }
 
     &.aside,
-    &.slidingUp,
+    &.slidedDown,
     &.slidingDown,
-    &.slidedDown {
-      padding: 0;
-      width: ${props => props.theme.dimensions.sidebar.width};
-      z-index: 30;
-    }
-
-    &.slidingDown,
-    &.slidedDown {
-      transform: translate3d(0, 100vh, 0);
+    &.slidingUp {
       height: calc(
         100vh - ${props => props.theme.dimensions.sidebar.header.minHeight}
       );
+      padding: 0;
+      width: ${props => props.theme.dimensions.sidebar.width};
+      z-index: 3;
     }
 
     &.aside,
     &.slidingUp {
-      transform: translate3d(
+      transform: translate(
         0,
-        ${props => props.theme.dimensions.sidebar.header.minHeight},
-        0
+        ${props => props.theme.dimensions.sidebar.header.minHeight}
       );
-      height: calc(
-        100vh - ${props => props.theme.dimensions.sidebar.header.minHeight}
-      );
+    }
+
+    &.slidedDown,
+    &.slidingDown {
+      transform: translate(0, 100vh);
+    }
+
+    &.slidingDown,
+    &.slidingIn,
+    &.slidingOut,
+    &.slidingUp {
+      transition: 0.5s ease-in-out;
     }
   }
 `;
 
-export default props => {
+export default () => {
   const { navigatorState } = useContext(UIContext);
   const { posts } = navigatorData();
 
