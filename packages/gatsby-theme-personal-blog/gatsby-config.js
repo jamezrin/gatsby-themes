@@ -13,6 +13,10 @@ module.exports = {
       { name: 'linkedin', url: 'https://www.linkedin.com/in/greglobinski/' },
       { name: 'www', url: 'https://www.greglobinski.com' },
     ],
+    pageLinks: [
+      { label: 'About', to: '/about' },
+      { label: 'Contact', to: '/contact' },
+    ],
   },
   plugins: [
     {
@@ -49,6 +53,14 @@ module.exports = {
         path: `${__dirname}/content/fragments/`,
       },
     },
+
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `personal-blog-pieces`,
+        path: `${__dirname}/content/pieces/`,
+      },
+    },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
@@ -66,6 +78,12 @@ module.exports = {
     {
       resolve: `gatsby-mdx`,
       options: {
+        extensions: ['.mdx', '.md'],
+        defaultLayouts: {
+          'personal-blog-pieces': require.resolve(
+            './src/templates/PieceTemplate'
+          ),
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',

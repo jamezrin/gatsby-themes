@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { UIContext } from '../../context/UIState';
 import Header from './Header';
 import SocialLinks from './SocialLinks';
+import PageLinks from './PageLinks';
 import Footer from '../shared/Footer';
 import Info from './Info';
 
@@ -47,6 +48,7 @@ export default props => {
     <Sidebar className={addPrefix('navigator', navigatorState)}>
       <Header slideInNavigator={slideInNavigator} />
       <Info />
+      <PageLinks />
       <SocialLinks />
       <Footer inSidebar />
     </Sidebar>

@@ -6,11 +6,7 @@ import socialLinks from '../../data/socialLinks';
 const SocialLinks = styled.ul`
   display: flex;
   list-style: none;
-`;
-
-const SocialLink = styled.li`
-  margin: ${props => props.theme.spaces.xl}
-    ${props => props.theme.spaces[`2xs`]} 0;
+  margin-top: ${props => props.theme.spaces.l};
   opacity: 1;
   transition: 0.5s ease;
 
@@ -18,6 +14,10 @@ const SocialLink = styled.li`
   .navigatorSlidingUp & {
     opacity: 0;
   }
+`;
+
+const SocialLink = styled.li`
+  margin: 0 ${props => props.theme.spaces[`2xs`]} 0;
 
   a {
     display: flex;

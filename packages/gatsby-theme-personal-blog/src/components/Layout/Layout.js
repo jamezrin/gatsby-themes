@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'emotion-theming';
 
-
 import GlobalStyles from '../../styles/GlobalStyles';
 import GlobalFonts from '../../styles/GlobalFonts';
 import Navigator from '../Navigator';
@@ -21,12 +20,12 @@ const Layout = props => {
       <UIProvider location={location}>
         <GlobalStyles />
         <GlobalFonts />
-        <Sidebar />
-        <Navigator />
         <PageContainer>
           <main>{children}</main>
           <Footer />
         </PageContainer>
+        <Navigator />
+        <Sidebar />
       </UIProvider>
     </ThemeProvider>
   );

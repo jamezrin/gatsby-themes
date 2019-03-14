@@ -26,6 +26,7 @@ const Navigator = styled.nav`
     &.slidingIn,
     &.slidingOut {
       width: calc(100% - ${props => props.theme.dimensions.sidebar.width});
+      padding-right: 120px;
     }
 
     &.featured,
