@@ -74,20 +74,20 @@ export default ({ children }) => {
   }
 
   if (!valid) {
-    console.warn(
-      `Regrettably children of one of the instances of PhotoCredit are wrongly formated
+    console.error(
+      `Children of PhotoCredit component are not properly formated
 
-  That's a proper usage of the component:
+  The proper usage of the component is like below:
 
   <PhotoCredit>
 
-  ![alt](./name.jpg)
+  ![image-alt](path-to-image)
 
-  [label](https://url.com)
+  [link-label](link-url)
 
   </PhotoCredit>
 
-you have to leave an emptly line between every row.
+You have to leave an empty line between every two rows.
 
       `
     );
