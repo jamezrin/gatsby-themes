@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import { MDXProvider } from '@mdx-js/tag';
+import AuthorNote from '../../../content/pieces/AuthorNote.mdx';
 
 export const ArtTitle = styled.h1`
   color: ${props => props.theme.colors.header};
@@ -49,7 +50,7 @@ export const Content = styled.div`
   }
 `;
 
-const ArticleRoot = styled.article`
+const Article = styled.article`
   max-width: 55rem;
   margin: 0 auto;
   color: ${props => props.theme.colors.text};
@@ -87,7 +88,7 @@ const ArticleRoot = styled.article`
   }
 `;
 
-const Article = ({ children, post = {} }) => {
+const ArticleComp = ({ children, post = {} }) => {
   const { title, subTitle, body } = post;
 
   return (
@@ -98,16 +99,17 @@ const Article = ({ children, post = {} }) => {
       }}
     >
       {body ? (
-        <ArticleRoot>
+        <Article>
           <ArtTitle>{title}</ArtTitle>
           {subTitle && <ArtSubtitle>{subTitle}</ArtSubtitle>}
           <MDXRenderer>{body}</MDXRenderer>
-        </ArticleRoot>
+          <AuthorNote />
+        </Article>
       ) : (
-        <ArticleRoot>{children}</ArticleRoot>
+        <Article>{children}</Article>
       )}
     </MDXProvider>
   );
 };
 
-export default Article;
+export default ArticleComp;

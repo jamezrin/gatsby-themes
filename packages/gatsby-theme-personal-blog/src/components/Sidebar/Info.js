@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
-import sidebarInfo from '../../data/sidebarInfo';
+import SidebarInfo from '../../../content/pieces/SidebarInfo.mdx';
 
-const Info = styled.div`
+const Info = styled(SidebarInfo)`
   font-size: ${props => props.theme.fontSizes.s};
   color: #666;
   line-height: 1.5;
@@ -19,11 +18,5 @@ const Info = styled.div`
 `;
 
 export default props => {
-  const info = sidebarInfo();
-
-  return (
-    <Info>
-      <MDXRenderer>{info}</MDXRenderer>
-    </Info>
-  );
+  return <Info />;
 };

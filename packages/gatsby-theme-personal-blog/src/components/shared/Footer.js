@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 
-import footerCredits from '../../data/footerCredits';
+import FooterCredits from '../../../content/pieces/FooterCredits.mdx';
 
 const Footer = styled.footer`
   padding: ${props => props.theme.spaces.xl};
@@ -24,8 +23,8 @@ const Footer = styled.footer`
   }
 `;
 
-const Credits = styled.div`
-  font-size: ${props => props.theme.fontSizes[`2xs`]};
+const Credits = styled(FooterCredits)`
+  font-size: ${props => props.theme.fontSizes[`xs`]};
 
   ul {
     list-style: none;
@@ -43,24 +42,21 @@ const Credits = styled.div`
   .inSidebar & {
     ul {
       flex-direction: column;
+      font-size: ${props => props.theme.fontSizes[`2xs`]};
     }
   }
 `;
 
-const FooterComponent = ({ inSidebar = false }) => {
-  const credits = footerCredits();
-
+const FooterComp = ({ inSidebar = false }) => {
   return (
     <Footer className={inSidebar ? `inSidebar` : ``}>
-      <Credits>
-        <MDXRenderer>{credits}</MDXRenderer>
-      </Credits>
+      <Credits />
     </Footer>
   );
 };
 
-FooterComponent.propTypes = {
+FooterComp.propTypes = {
   inSidebar: PropTypes.bool,
 };
 
-export default FooterComponent;
+export default FooterComp;

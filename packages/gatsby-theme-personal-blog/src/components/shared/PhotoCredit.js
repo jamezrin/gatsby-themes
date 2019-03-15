@@ -55,7 +55,45 @@ const PhotoCredit = styled.figure`
 `;
 
 export default ({ children }) => {
-  return (
+  let valid = true;
+
+  if (valid && children.length !== 2) {
+    valid = false;
+  }
+
+  if (
+    valid &&
+    children[0].props.children.props.props.className !==
+      'gatsby-resp-image-link'
+  ) {
+    valid = false;
+  }
+
+  if (valid && !children[1].props.children.props.props.href) {
+    valid = false;
+  }
+
+  if (!valid) {
+    console.error(
+      `Children of PhotoCredit component are not properly formated
+
+  The proper usage of the component is like below:
+
+  <PhotoCredit>
+
+  ![image-alt](path-to-image)
+
+  [link-label](link-url)
+
+  </PhotoCredit>
+
+You have to leave an empty line between every two rows.
+
+      `
+    );
+  }
+
+  return valid ? (
     <PhotoCredit>
       {children[0].props.children}
       <figcaption>
@@ -66,6 +104,5 @@ export default ({ children }) => {
         </a>
       </figcaption>
     </PhotoCredit>
-  );
+  ) : null;
 };
-//
