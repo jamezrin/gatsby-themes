@@ -7,6 +7,7 @@ import GlobalFonts from '../../styles/GlobalFonts';
 import Navigator from '../Navigator';
 import Sidebar from '../Sidebar';
 import PageContainer from './PageContainer';
+import ActionsBar from '../ActionsBar';
 import Footer from '../shared/Footer';
 import { UIProvider } from '../../context/UIState';
 
@@ -26,6 +27,7 @@ const Layout = props => {
         </PageContainer>
         <Navigator />
         <Sidebar />
+        <ActionsBar />
       </UIProvider>
     </ThemeProvider>
   );
